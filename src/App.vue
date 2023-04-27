@@ -1,30 +1,48 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-demo"
+    mode="horizontal"
+    @select="handleSelect"
+  >
+    <el-sub-menu index="1">
+      <template #title>系统拓扑</template>
+      <el-menu-item index="1-1">流程工业拓扑图1</el-menu-item>
+      <el-menu-item index="1-2">流程工业拓扑图2</el-menu-item>
+      <el-menu-item index="1-3">Test-Net拓扑图</el-menu-item>
+    </el-sub-menu>
+    <el-sub-menu index="2">
+      <template #title>攻击路径规划</template>
+      <el-menu-item index="2-1">拓扑展示</el-menu-item>
+      <el-menu-item index="2-2">攻击路径图</el-menu-item>
+    </el-sub-menu>
+    <el-menu-item index="3">攻击路径局部更新</el-menu-item>
+    <el-menu-item index="4">关键攻击步骤识别</el-menu-item>
+    <el-menu-item index="5">算法性能</el-menu-item>
+    <el-menu-item index="6">数据管理</el-menu-item>
+  </el-menu>
+  <Topology1 class="display" v-if="activeIndex == '1-1'"></Topology1>
+  <Topology2 class="display" v-if="activeIndex == '1-2'"></Topology2>
+  <Topology3 class="display" v-if="activeIndex == '1-3'"></Topology3>
+  <AttackPath class="display" v-if="activeIndex == '2'"></AttackPath>
 </template>
 
+<script lang="ts" setup>
+import { ref } from 'vue'
+import Topology1 from './components/Topology1.vue'
+import Topology2 from './components/Topology2.vue'
+import Topology3 from './components/Topology3.vue'
+import AttackPath from './components/AttackPath.vue'
+
+const activeIndex = ref('1-1')
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+  activeIndex.value = key
+}
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.display {
+  height: calc(100vh - 59px)
 }
 </style>
