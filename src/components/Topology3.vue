@@ -4,8 +4,9 @@
 
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
-import topology from "../assets/originalTopologyWithLoc.json"
-import { onMounted } from "vue"
+import { onMounted, watch } from "vue"
+
+const props = defineProps(['modelJson'])
 
 function stringify(node) {
   let res = ""
@@ -19,9 +20,11 @@ function stringify(node) {
   return res
 }
 
+let topo: go.Diagram
+
 onMounted(() => {
   const $ = go.GraphObject.make
-  const topo = new go.Diagram("topology")
+  topo = new go.Diagram("topology")
   topo.undoManager.isEnabled = true
   topo.toolManager.hoverDelay = 100
   topo.toolManager.toolTipDuration = 100000
@@ -54,17 +57,22 @@ onMounted(() => {
       )
     }
   )
-  const nodeDataArray = []
-  const linkDataArray = []
-  for (let host of topology.hosts) {
-    nodeDataArray.push({ key: host.host_name, category: "host", ...host })
-  }
-  for (let edge of topology.edges) {
-    linkDataArray.push({ from: edge.source, to: edge.target, ...edge })
-  }
-  topo.model = new go.GraphLinksModel(nodeDataArray, linkDataArray)
+  topo.model = go.Model.fromJson(props.modelJson)
+  window.print = () => {
+		console.log(JSON.stringify(JSON.parse(topo.model.toJson()), null, "\t"))
+	}
 })
 
+watch(
+  () => props.modelJson,
+  (newModelJson, _) => {
+    console.log("newModelJson detected")
+    topo.model = go.Model.fromJson(newModelJson)
+  },
+  {
+    deep: true
+  }
+)
 </script>
 <style scoped>
 </style>

@@ -1,0 +1,348 @@
+{
+	"class": "GraphLinksModel",
+	"nodeDataArray": [
+		{
+			"key": "attacker",
+			"category": "host",
+			"host_name": "attacker",
+			"privilege": "3",
+			"service": [],
+			"vuls": [],
+			"img": "https://upyun.wuuconix.link/image-attacker.png",
+			"loc": "100 142.5"
+		},
+		{
+			"key": "host0",
+			"category": "host",
+			"host_name": "host0",
+			"privilege": "1",
+			"service": [
+				"iis_web_service"
+			],
+			"vuls": [
+				"iis_bufferflow"
+			],
+			"img": "https://upyun.wuuconix.link/image-h0.png",
+			"loc": "315 142.5"
+		},
+		{
+			"key": "host1",
+			"category": "host",
+			"host_name": "host1",
+			"privilege": "1",
+			"service": [
+				"ftp",
+				"ssh",
+				"ssh_bof",
+				"rsh"
+			],
+			"vuls": [
+				"ftp_rhost",
+				"ssh_bufferflow",
+				"rsh_login"
+			],
+			"img": "https://upyun.wuuconix.link/image-h1.png",
+			"loc": "495 235"
+		},
+		{
+			"key": "host2",
+			"category": "host",
+			"host_name": "host2",
+			"privilege": "1",
+			"service": [
+				"netbios_ssn",
+				"rsh"
+			],
+			"vuls": [
+				"netbios_nullsession",
+				"rsh_login"
+			],
+			"img": "https://upyun.wuuconix.link/image-h1.png",
+			"loc": "675 215"
+		},
+		{
+			"key": "host3",
+			"category": "host",
+			"host_name": "host3",
+			"privilege": "1",
+			"service": [
+				"squid_proxy",
+				"licq_chat_service",
+				"mysql_db"
+			],
+			"vuls": [
+				"squid_port_scan",
+				"licq_remote_to_user",
+				"local_setuid_bufferflow"
+			],
+			"img": "https://upyun.wuuconix.link/image-h3.png",
+			"loc": "855 90"
+		}
+	],
+	"linkDataArray": [
+		{
+			"from": "attacker",
+			"to": "host0",
+			"source": "attacker",
+			"target": "host0",
+			"condition": [
+				"iis_web_service"
+			],
+			"points": [
+				{
+					"x": 200,
+					"y": 142.5
+				},
+				{
+					"x": 225,
+					"y": 142.5
+				},
+				{
+					"x": 250,
+					"y": 142.5
+				}
+			]
+		},
+		{
+			"from": "host0",
+			"to": "host1",
+			"source": "host0",
+			"target": "host1",
+			"condition": [
+				"ssh",
+				"rsh",
+				"ftp"
+			],
+			"points": [
+				{
+					"x": 380,
+					"y": 209.30555555555554
+				},
+				{
+					"x": 405,
+					"y": 235
+				},
+				{
+					"x": 430,
+					"y": 235
+				}
+			]
+		},
+		{
+			"from": "host2",
+			"to": "host1",
+			"source": "host2",
+			"target": "host1",
+			"condition": [
+				"ssh",
+				"rsh",
+				"ftp"
+			],
+			"points": [
+				{
+					"x": 610,
+					"y": 236.66666666666666
+				},
+				{
+					"x": 585,
+					"y": 245
+				},
+				{
+					"x": 560,
+					"y": 242.22222222222223
+				}
+			]
+		},
+		{
+			"from": "host0",
+			"to": "host3",
+			"source": "host0",
+			"target": "host3",
+			"condition": [
+				"squid_proxy",
+				"licq_chat_service"
+			],
+			"points": [
+				{
+					"x": 380,
+					"y": 90.13888888888889
+				},
+				{
+					"x": 405,
+					"y": 70
+				},
+				{
+					"x": 495,
+					"y": 70
+				},
+				{
+					"x": 585,
+					"y": 70
+				},
+				{
+					"x": 675,
+					"y": 70
+				},
+				{
+					"x": 765,
+					"y": 70
+				},
+				{
+					"x": 790,
+					"y": 75.55555555555556
+				}
+			]
+		},
+		{
+			"from": "host0",
+			"to": "host2",
+			"source": "host0",
+			"target": "host2",
+			"condition": [
+				"netbios_ssn",
+				"rsh"
+			],
+			"points": [
+				{
+					"x": 380,
+					"y": 119.02777777777777
+				},
+				{
+					"x": 405,
+					"y": 110
+				},
+				{
+					"x": 495,
+					"y": 110
+				},
+				{
+					"x": 585,
+					"y": 110
+				},
+				{
+					"x": 610,
+					"y": 139.16666666666669
+				}
+			]
+		},
+		{
+			"from": "host1",
+			"to": "host2",
+			"source": "host1",
+			"target": "host2",
+			"condition": [
+				"netbios_ssn",
+				"rsh"
+			],
+			"points": [
+				{
+					"x": 560,
+					"y": 227.77777777777777
+				},
+				{
+					"x": 585,
+					"y": 225
+				},
+				{
+					"x": 610,
+					"y": 222.22222222222223
+				}
+			]
+		},
+		{
+			"from": "host1",
+			"to": "host3",
+			"source": "host1",
+			"target": "host3",
+			"condition": [
+				"squid_proxy",
+				"licq_chat_service"
+			],
+			"points": [
+				{
+					"x": 550.8620689655172,
+					"y": 145
+				},
+				{
+					"x": 585,
+					"y": 90
+				},
+				{
+					"x": 675,
+					"y": 90
+				},
+				{
+					"x": 765,
+					"y": 90
+				},
+				{
+					"x": 790,
+					"y": 90
+				}
+			]
+		},
+		{
+			"from": "host2",
+			"to": "host3",
+			"source": "host2",
+			"target": "host3",
+			"condition": [
+				"squid_proxy",
+				"licq_chat_service"
+			],
+			"points": [
+				{
+					"x": 740,
+					"y": 215
+				},
+				{
+					"x": 765,
+					"y": 215
+				},
+				{
+					"x": 790.2,
+					"y": 180
+				}
+			]
+		},
+		{
+			"from": "host3",
+			"to": "host3",
+			"source": "host3",
+			"target": "host3",
+			"condition": [
+				"mysql_db"
+			],
+			"points": [
+				{
+					"x": 804.8571428571429,
+					"y": 180
+				},
+				{
+					"x": 790,
+					"y": 206.66666666666666
+				},
+				{
+					"x": 790,
+					"y": 213.33333333333334
+				},
+				{
+					"x": 855,
+					"y": 220
+				},
+				{
+					"x": 920,
+					"y": 213.33333333333334
+				},
+				{
+					"x": 920,
+					"y": 206.66666666666666
+				},
+				{
+					"x": 905.1428571428571,
+					"y": 180
+				}
+			]
+		}
+	]
+}
