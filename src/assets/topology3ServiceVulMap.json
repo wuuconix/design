@@ -1,0 +1,10 @@
+{
+  "iis_bufferflow": "iis_web_service",
+  "ftp_rhost": "ftp",
+  "ssh_bufferflow": "ssh_bof",
+  "rsh_login": "rsh",
+  "netbios_nullsession": "netbios_ssn",
+  "squid_port_scan": "squid_proxy",
+  "licq_remote_to_user": "licq_chat_service",
+  "local_setuid_bufferflow": "mysql_db"
+}

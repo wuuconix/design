@@ -33,7 +33,6 @@
 			"service": [
 				"ftp",
 				"ssh",
-				"ssh_bof",
 				"rsh"
 			],
 			"vuls": [

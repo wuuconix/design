@@ -34,7 +34,7 @@
         </el-menu>
       </el-header>
       <el-container class="body">
-        <el-aside :width="asideWidth" v-if="['3-1', '3-2'].includes(activeIndex)">
+        <el-aside width="30vw" v-if="activeIndex == '3-1'">
           <p style="font-weight: bold">选择删除主机/脆弱性/可达性关系以更新拓扑图</p>
           <el-cascader-panel :options="cascaderOptions" v-model="cascaderValue" @change="handleCasCaderChange"/>
           <el-row class="btn">
@@ -42,12 +42,19 @@
             <el-button type="primary" round @click="revertModel">还原拓扑图</el-button>
           </el-row>
         </el-aside>
+        <el-aside width="10vw" v-if="activeIndex == '3-2'" style="justify-content: center;">
+          <p style="font-weight: bold;">根据拓扑图更新属性攻击图</p>
+          <el-row class="btn">
+            <el-button type="success" round @click="isGraphUpdate = true">更新</el-button>
+            <el-button type="primary" round @click="isGraphUpdate = false">还原</el-button>
+          </el-row>
+        </el-aside>
         <el-main>
           <Topology1 class="display" v-if="activeIndex == '1-1'" />
           <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" />
           <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
           <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" />
-          <AttackGraph class="display" v-if="activeIndex == '3-2'" />
+          <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
         </el-main>
       </el-container>
     </el-container>
@@ -55,170 +62,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import Topology1 from './components/Topology1.vue'
 import Topology2 from './components/Topology2.vue'
 import Topology3 from './components/Topology3.vue'
 import AttackPath from './components/AttackPath.vue'
 import AttackGraph from './components/AttackGraph.vue'
 import topology3ModelJson from "./assets/topology3Model.json"
+import cascaderOptions from "./assets/cascaderOptions.json"
+import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
 
 let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(JSON.stringify(topology3ModelJson)))
 const activeIndex = ref('3-1')
 const cascaderValue = ref('')
-const asideWidth = computed(() => {
-  return activeIndex.value == '3-1' ? "30vw" : "10vw"
-})
-
-const cascaderOptions = [
-  {
-    value: "host",
-    label: "选择删除一个主机",
-    children: [
-      {
-        value: "host0",
-        label: "主机0"
-      },
-      {
-        value: "host1",
-        label: "主机1"
-      },
-      {
-        value: "host2",
-        label: "主机2"
-      },
-      {
-        value: "host3",
-        label: "主机3"
-      }
-    ],
-  },
-  {
-    value: "vul",
-    label: "选择删除一个脆弱性",
-    children: [
-      {
-        value: "host0",
-        label: "主机0的脆弱性",
-        children: [
-          {
-            value: "iis_bufferflow",
-            label: "iis_bufferflow"
-          }
-        ]
-      },
-      {
-        value: "host1",
-        label: "主机1的脆弱性",
-        children: [
-          {
-            value: "ftp_rhost",
-            label: "ftp_rhost"
-          },          {
-            value: "ssh_bufferflow",
-            label: "ssh_bufferflow"
-          },
-          {
-            value: "rsh_login",
-            label: "rsh_login"
-          }
-        ]
-      },
-      {
-        value: "host2",
-        label: "主机2的脆弱性",
-        children: [
-          {
-            value: "netbios_nullsession",
-            label: "netbios_nullsession"
-          },          {
-            value: "rsh_login",
-            label: "rsh_login"
-          }
-        ]
-      },
-      {
-        value: "host3",
-        label: "主机3的脆弱性",
-        children: [
-          {
-            value: "squid_port_scan",
-            label: "squid_port_scan"
-          },          {
-            value: "licq_remote_to_user",
-            label: "licq_remote_to_user"
-          },
-          {
-            value: "local_setuid_bufferflow",
-            label: "local_setuid_bufferflow"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    value: "connection",
-    label: "选择删除一个可达性关系信息",
-    children: [
-      {
-        value: "host0",
-        label: "主机0的可达性关系",
-        children: [
-          {
-            value: "01",
-            label: "host0 -> host1"
-          },
-          {
-            value: "02",
-            label: "host0 -> host2"
-          },
-          {
-            value: "03",
-            label: "host0 -> host3"
-          }
-        ]
-      },
-      {
-        value: "host1",
-        label: "主机1的可达性关系",
-        children: [
-          {
-            value: "12",
-            label: "host1 -> host2"
-          },
-          {
-            value: "13",
-            label: "host1 -> host3"
-          }
-        ]
-      },
-      {
-        value: "host2",
-        label: "主机2的可达性关系",
-        children: [
-          {
-            value: "21",
-            label: "host2 -> host1"
-          },
-          {
-            value: "23",
-            label: "host2 -> host3"
-          }
-        ]
-      },
-      {
-        value: "host3",
-        label: "主机3的可达性关系",
-        children: [
-          {
-            value: "33",
-            label: "host3 -> host3"
-          }
-        ]
-      },
-    ]
-  }
-]
+const isGraphUpdate = ref(false)
 
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -236,14 +93,25 @@ function changeModel() {
     const targetHost = select[1]
     topology3ModelJsonReactive.nodeDataArray = topology3ModelJsonReactive.nodeDataArray.filter(v => v.host_name != targetHost)
     topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.from != targetHost && v.to != targetHost)
+  } else if (select[0] == "vul") {
+    const targetHost = select[1]
+    const targetVul = select[2]
+    const nodeData = topology3ModelJsonReactive.nodeDataArray.find(v => v.host_name == targetHost)
+    nodeData!.vuls = nodeData!.vuls.filter(vul => vul != targetVul)
+    topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.to != targetHost || !v.condition.includes(topology3ServiceVulMap[targetVul]))
+  } else if (select[0] == "connection") {
+    const fromHost = select[1]
+    const toHost = select[2]
+    topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.from != fromHost || v.to != toHost)
   }
   // topology3ModelJsonReactive.nodeDataArray.splice(1, 1)
   // console.log(topology3ModelJsonReactive.nodeDataArray)
 }
 
-async function revertModel() {
+function revertModel() {
   Object.assign(topology3ModelJsonReactive, topology3ModelJson)
 }
+
 </script>
 
 <style scoped>
@@ -256,7 +124,7 @@ async function revertModel() {
 
 .el-aside {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
 }

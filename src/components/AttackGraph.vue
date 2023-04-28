@@ -4,8 +4,13 @@
 
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
-import { onMounted } from "vue"
-import attackGraph from "../assets/attackGraphWithLoc.json"
+import { onMounted, watch } from "vue"
+import modelJson from "../assets/attackGraphModel.json"
+import updateModelJson from "../assets/attackGraphUpdateModel.json"
+
+const props = defineProps<{
+  update: boolean
+}>()
 
 function stringify(node) {
   let res = ""
@@ -21,7 +26,9 @@ function stringify(node) {
 
 onMounted(() => {
   const $ = go.GraphObject.make
-  const atg = new go.Diagram("attackGraph")
+  const atg = new go.Diagram("attackGraph", {
+    initialAutoScale: go.Diagram.Uniform
+  })
   atg.undoManager.isEnabled = true
   atg.toolManager.hoverDelay = 100
   atg.toolManager.toolTipDuration = 100000
@@ -61,15 +68,16 @@ onMounted(() => {
       new go.Binding("stroke", "dotted", d => d ? "red" : null)
     )
   )
-  const nodeDataArray = []
-  const linkDataArray = []
-  for (let node of attackGraph.nodes) {
-    nodeDataArray.push({ key: node.name, ...node })
-  }
-  for (let edge of attackGraph.edges) {
-    linkDataArray.push({ from: edge.source, to: edge.target, ...edge })
-  }
-  atg.model = new go.GraphLinksModel(nodeDataArray, linkDataArray)
+  atg.model = go.Model.fromJson(modelJson)
+  window.print = () => {
+		console.log(JSON.stringify(JSON.parse(atg.model.toJson()), null, "\t"))
+	}
+  watch(
+    () => props.update,
+    (update => {
+      atg.model = go.Model.fromJson(update ?  updateModelJson : modelJson)
+    })
+  )
 })
 
 </script>

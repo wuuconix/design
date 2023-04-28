@@ -1,0 +1,149 @@
+[
+  {
+    "value": "host",
+    "label": "选择删除一个主机",
+    "children": [
+      {
+        "value": "host0",
+        "label": "host0"
+      },
+      {
+        "value": "host1",
+        "label": "host1"
+      },
+      {
+        "value": "host2",
+        "label": "host2"
+      },
+      {
+        "value": "host3",
+        "label": "host3"
+      }
+    ]
+  },
+  {
+    "value": "vul",
+    "label": "选择删除一个脆弱性",
+    "children": [
+      {
+        "value": "host0",
+        "label": "host0的脆弱性",
+        "children": [
+          {
+            "value": "iis_bufferflow",
+            "label": "iis_bufferflow"
+          }
+        ]
+      },
+      {
+        "value": "host1",
+        "label": "host1的脆弱性",
+        "children": [
+          {
+            "value": "ftp_rhost",
+            "label": "ftp_rhost"
+          },          {
+            "value": "ssh_bufferflow",
+            "label": "ssh_bufferflow"
+          },
+          {
+            "value": "rsh_login",
+            "label": "rsh_login"
+          }
+        ]
+      },
+      {
+        "value": "host2",
+        "label": "host2的脆弱性",
+        "children": [
+          {
+            "value": "netbios_nullsession",
+            "label": "netbios_nullsession"
+          },          {
+            "value": "rsh_login",
+            "label": "rsh_login"
+          }
+        ]
+      },
+      {
+        "value": "host3",
+        "label": "host3的脆弱性",
+        "children": [
+          {
+            "value": "squid_port_scan",
+            "label": "squid_port_scan"
+          },          {
+            "value": "licq_remote_to_user",
+            "label": "licq_remote_to_user"
+          },
+          {
+            "value": "local_setuid_bufferflow",
+            "label": "local_setuid_bufferflow"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "value": "connection",
+    "label": "选择删除一个可达性关系信息",
+    "children": [
+      {
+        "value": "host0",
+        "label": "host0的可达性关系",
+        "children": [
+          {
+            "value": "host1",
+            "label": "host0 -> host1"
+          },
+          {
+            "value": "host2",
+            "label": "host0 -> host2"
+          },
+          {
+            "value": "host3",
+            "label": "host0 -> host3"
+          }
+        ]
+      },
+      {
+        "value": "host1",
+        "label": "host1的可达性关系",
+        "children": [
+          {
+            "value": "host2",
+            "label": "host1 -> host2"
+          },
+          {
+            "value": "host3",
+            "label": "host1 -> host3"
+          }
+        ]
+      },
+      {
+        "value": "host2",
+        "label": "host2的可达性关系",
+        "children": [
+          {
+            "value": "host1",
+            "label": "host2 -> host1"
+          },
+          {
+            "value": "host3",
+            "label": "host2 -> host3"
+          }
+        ]
+      },
+      {
+        "value": "host3",
+        "label": "host3的可达性关系",
+        "children": [
+          {
+            "value": "host3",
+            "label": "host3 -> host3"
+          }
+        ]
+      }
+    ]
+  }
+]
