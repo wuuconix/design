@@ -1,7 +1,7 @@
 [
   {
     "value": "host",
-    "label": "选择删除一个主机",
+    "label": "删除一个主机",
     "children": [
       {
         "value": "host0",
@@ -23,7 +23,7 @@
   },
   {
     "value": "vul",
-    "label": "选择删除一个脆弱性",
+    "label": "删除一个脆弱性",
     "children": [
       {
         "value": "host0",
@@ -86,7 +86,7 @@
   },
   {
     "value": "connection",
-    "label": "选择删除一个可达性关系信息",
+    "label": "删除一个可达性关系信息",
     "children": [
       {
         "value": "host0",

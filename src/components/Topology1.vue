@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
-import modelJson from "../assets/newTopologyModel.json"
+import modelJson from "../assets/topology1Model.json"
 import { onMounted } from "vue"
 
 onMounted(() => {
@@ -246,6 +246,9 @@ onMounted(() => {
     )
   )
   topo.model = go.Model.fromJson(modelJson)
+  window.print = () => {
+		console.log(JSON.stringify(JSON.parse(topo.model.toJson()), null, "\t"))
+	}
 })
 
 </script>

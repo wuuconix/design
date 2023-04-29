@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
 import { onMounted } from "vue"
-import attackPath from "../assets/attackPath2WithLoc.json"
+import modelJson from "../assets/attackPathModel.json"
 
 const { analyse } = defineProps<{
   analyse: boolean
@@ -65,15 +65,10 @@ onMounted(() => {
     $(go.Shape, { toArrow: "Standard" }),
     new go.Binding("points", "points")
   )
-  const nodeDataArray = []
-  const linkDataArray = []
-	for (let i = 0; i < attackPath.nodes.length; i++) {
-    nodeDataArray.push({ key: attackPath.nodes[i], loc: attackPath.locs[i], centers: attackPath.centers[i], sorts: attackPath.sorts[i], expectation: attackPath.expectations[i] })
+  atp.model = go.Model.fromJson(modelJson)
+  window.print = () => {
+		console.log(JSON.stringify(JSON.parse(atp.model.toJson()), null, "\t"))
 	}
-  for (let edge of attackPath.edges) {
-    linkDataArray.push({ from: edge.source, to: edge.target, ...edge })
-  }
-  atp.model = new go.GraphLinksModel(nodeDataArray, linkDataArray)
 })
 
 </script>

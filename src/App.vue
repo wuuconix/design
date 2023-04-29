@@ -34,7 +34,7 @@
         </el-menu>
       </el-header>
       <el-container class="body">
-        <el-aside width="30vw" v-if="activeIndex == '3-1'">
+        <el-aside width="35vw" v-if="activeIndex == '3-1'">
           <p style="font-weight: bold">选择删除主机/脆弱性/可达性关系以更新拓扑图</p>
           <el-cascader-panel :options="cascaderOptions" v-model="cascaderValue" @change="handleCasCaderChange"/>
           <el-row class="btn">
@@ -55,12 +55,13 @@
           <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
           <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" />
           <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
-          <div class="charts">
-            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart1'" :y-name="'real_time'" />
-            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart1'" :y-name="'max_mem'" />
-            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart2'" :y-name="'real_time'" />
-            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart2'" :y-name="'max_mem'" />
+          <div class="charts" v-if="activeIndex == '5'">
+            <Chart class="display" :chart-num="'chart1'" :y-name="'real_time'" />
+            <Chart class="display" :chart-num="'chart1'" :y-name="'max_mem'" />
+            <Chart class="display" :chart-num="'chart2'" :y-name="'real_time'" />
+            <Chart class="display" :chart-num="'chart2'" :y-name="'max_mem'" />
           </div>
+          <ModelJsonViewer class="display" v-if="activeIndex == '6'"/>
         </el-main>
       </el-container>
     </el-container>
@@ -78,6 +79,7 @@ import Chart from './components/Chart.vue'
 import topology3ModelJson from "./assets/topology3Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
 import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
+import ModelJsonViewer from './components/ModelJsonViewer.vue'
 
 let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(JSON.stringify(topology3ModelJson)))
 const activeIndex = ref('3-1')

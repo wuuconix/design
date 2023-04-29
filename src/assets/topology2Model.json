@@ -1,16 +1,20 @@
 {
-	"attacker": "Attacker",
-	"hosts": [
+	"class": "GraphLinksModel",
+	"nodeDataArray": [
 		{
+			"key": "Attacker",
+			"loc": "50 60",
 			"host_id": 0,
 			"host_name": "Attacker",
 			"privilege": "3",
 			"service": [],
 			"vuls": [],
 			"img": "https://upyun.wuuconix.link/image-attacker.png",
-			"loc": "50 60"
+			"name": "攻击者"
 		},
 		{
+			"key": "WS",
+			"loc": "200 60",
 			"host_id": 1,
 			"host_name": "WS",
 			"privilege": "1",
@@ -25,9 +29,11 @@
 				"AV:L/E:P/UI:N/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"loc": "200 60"
+			"name": "工作站"
 		},
 		{
+			"key": "DNS",
+			"loc": "350 230",
 			"host_id": 2,
 			"host_name": "DNS",
 			"privilege": "1",
@@ -42,9 +48,11 @@
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-dns.png",
-			"loc": "350 230"
+			"name": "DNS服务器"
 		},
 		{
+			"key": "OPC",
+			"loc": "500 60",
 			"host_id": 3,
 			"host_name": "OPC",
 			"privilege": "1",
@@ -62,9 +70,11 @@
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-opc.png",
-			"loc": "500 60"
+			"name": "OPC服务器"
 		},
 		{
+			"key": "Historian",
+			"loc": "350 60",
 			"host_id": 4,
 			"host_name": "Historian",
 			"privilege": "1",
@@ -79,9 +89,11 @@
 				"AV:N/E:P/UI:N/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-historyDb.png",
-			"loc": "350 60"
+			"name": "历史数据库"
 		},
 		{
+			"key": "HMI",
+			"loc": "800 107.5",
 			"host_name": "HMI",
 			"privilege": "1",
 			"weight": 3,
@@ -95,9 +107,11 @@
 				"AV:L/E:T/UI:N/C:N/I:H/A:N"
 			],
 			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"loc": "800 107.5"
+			"name": "HMI"
 		},
 		{
+			"key": "EWS",
+			"loc": "650 182.5",
 			"host_name": "EWS",
 			"privilege": "1",
 			"weight": 3,
@@ -114,9 +128,11 @@
 				"AV:N/E:P/UI:R/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"loc": "650 182.5"
+			"name": "工程师站"
 		},
 		{
+			"key": "PLC1",
+			"loc": "800 277.5",
 			"host_name": "PLC1",
 			"privilege": "1",
 			"weight": 4,
@@ -131,9 +147,11 @@
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-controller.png",
-			"loc": "800 277.5"
+			"name": "PLC1"
 		},
 		{
+			"key": "PLC2",
+			"loc": "950 277.5",
 			"host_name": "PLC2",
 			"privilege": "1",
 			"weight": 4,
@@ -150,9 +168,11 @@
 				"AV:N/E:T/UI:N/C:H/I:N/A:N"
 			],
 			"img": "https://upyun.wuuconix.link/image-controller.png",
-			"loc": "950 277.5"
+			"name": "PLC2"
 		},
 		{
+			"key": "Valve",
+			"loc": "1100 60",
 			"host_name": "Valve",
 			"device_type": "physical",
 			"weight": 5,
@@ -170,9 +190,11 @@
 				"C:N/I:H/A:H"
 			],
 			"img": "https://upyun.wuuconix.link/image-exce-1.png",
-			"loc": "1100 60"
+			"name": "阀门"
 		},
 		{
+			"key": "Reactor",
+			"loc": "1100 400",
 			"host_name": "Reactor",
 			"device_type": "physical",
 			"service": [
@@ -192,9 +214,11 @@
 				"C:N/I:P/A:P"
 			],
 			"img": "https://upyun.wuuconix.link/image-exce-3.png",
-			"loc": "1100 400"
+			"name": "反应釜"
 		},
 		{
+			"key": "Sensor",
+			"loc": "1100 230",
 			"host_name": "Sensor",
 			"device_type": "physical",
 			"weight": 2,
@@ -211,19 +235,13 @@
 				"C:N/I:N/A:P"
 			],
 			"img": "https://upyun.wuuconix.link/image-pres-sensor.png",
-			"loc": "1100 230"
+			"name": "传感器"
 		}
 	],
-	"edges": [
+	"linkDataArray": [
 		{
-			"source": "Attacker",
-			"target": "WS",
-			"vul": [
-				"Print_Improper_Privilege_Management"
-			],
-			"condition": [
-				"Windows_Print"
-			],
+			"from": "Attacker",
+			"to": "WS",
 			"points": [
 				{
 					"x": 100,
@@ -237,17 +255,19 @@
 					"x": 150,
 					"y": 60
 				}
+			],
+			"source": "Attacker",
+			"target": "WS",
+			"vul": [
+				"Print_Improper_Privilege_Management"
+			],
+			"condition": [
+				"Windows_Print"
 			]
 		},
 		{
-			"source": "WS",
-			"target": "DNS",
-			"vul": [
-				"DNS_Remote_Code_Execution"
-			],
-			"condition": [
-				"Windows_DNS_Server"
-			],
+			"from": "WS",
+			"to": "DNS",
 			"points": [
 				{
 					"x": 226.47058823529412,
@@ -261,17 +281,19 @@
 					"x": 300,
 					"y": 230
 				}
+			],
+			"source": "WS",
+			"target": "DNS",
+			"vul": [
+				"DNS_Remote_Code_Execution"
+			],
+			"condition": [
+				"Windows_DNS_Server"
 			]
 		},
 		{
-			"source": "WS",
-			"target": "Historian",
-			"vul": [
-				"Oracle_Out_of_bounds_Write"
-			],
-			"condition": [
-				"Oracle"
-			],
+			"from": "WS",
+			"to": "Historian",
 			"points": [
 				{
 					"x": 250,
@@ -285,19 +307,19 @@
 					"x": 300,
 					"y": 60
 				}
+			],
+			"source": "WS",
+			"target": "Historian",
+			"vul": [
+				"Oracle_Out_of_bounds_Write"
+			],
+			"condition": [
+				"Oracle"
 			]
 		},
 		{
-			"source": "Historian",
-			"target": "OPC",
-			"vul": [
-				"OPC_Improper_Authentication",
-				"OPC_Heap_Bufferflow"
-			],
-			"condition": [
-				"OPC_UA_Server_NET",
-				"OPC_UA_Server_MEM"
-			],
+			"from": "Historian",
+			"to": "OPC",
 			"points": [
 				{
 					"x": 400,
@@ -311,10 +333,8 @@
 					"x": 450,
 					"y": 60
 				}
-			]
-		},
-		{
-			"source": "DNS",
+			],
+			"source": "Historian",
 			"target": "OPC",
 			"vul": [
 				"OPC_Improper_Authentication",
@@ -323,7 +343,11 @@
 			"condition": [
 				"OPC_UA_Server_NET",
 				"OPC_UA_Server_MEM"
-			],
+			]
+		},
+		{
+			"from": "DNS",
+			"to": "OPC",
 			"points": [
 				{
 					"x": 400,
@@ -337,19 +361,21 @@
 					"x": 473.52941176470586,
 					"y": 120
 				}
+			],
+			"source": "DNS",
+			"target": "OPC",
+			"vul": [
+				"OPC_Improper_Authentication",
+				"OPC_Heap_Bufferflow"
+			],
+			"condition": [
+				"OPC_UA_Server_NET",
+				"OPC_UA_Server_MEM"
 			]
 		},
 		{
-			"source": "OPC",
-			"target": "EWS",
-			"vul": [
-				"Improper_File_Access",
-				"Deserialization_of_Untrusted_Data"
-			],
-			"condition": [
-				"CodeSys_File",
-				"CodeSys"
-			],
+			"from": "OPC",
+			"to": "EWS",
 			"points": [
 				{
 					"x": 536.7346938775511,
@@ -363,17 +389,21 @@
 					"x": 600,
 					"y": 182.5
 				}
+			],
+			"source": "OPC",
+			"target": "EWS",
+			"vul": [
+				"Improper_File_Access",
+				"Deserialization_of_Untrusted_Data"
+			],
+			"condition": [
+				"CodeSys_File",
+				"CodeSys"
 			]
 		},
 		{
-			"source": "OPC",
-			"target": "HMI",
-			"vul": [
-				"HMI_Improper_Access_Control"
-			],
-			"condition": [
-				"AsrDrv103_sys"
-			],
+			"from": "OPC",
+			"to": "HMI",
 			"points": [
 				{
 					"x": 550,
@@ -395,17 +425,19 @@
 					"x": 750,
 					"y": 75.83333333333333
 				}
-			]
-		},
-		{
-			"source": "EWS",
+			],
+			"source": "OPC",
 			"target": "HMI",
 			"vul": [
 				"HMI_Improper_Access_Control"
 			],
 			"condition": [
 				"AsrDrv103_sys"
-			],
+			]
+		},
+		{
+			"from": "EWS",
+			"to": "HMI",
 			"points": [
 				{
 					"x": 700,
@@ -419,19 +451,19 @@
 					"x": 750,
 					"y": 150.83333333333334
 				}
+			],
+			"source": "EWS",
+			"target": "HMI",
+			"vul": [
+				"HMI_Improper_Access_Control"
+			],
+			"condition": [
+				"AsrDrv103_sys"
 			]
 		},
 		{
-			"source": "HMI",
-			"target": "EWS",
-			"vul": [
-				"Improper_File_Access",
-				"Deserialization_of_Untrusted_Data"
-			],
-			"condition": [
-				"CodeSys_File",
-				"CodeSys"
-			],
+			"from": "HMI",
+			"to": "EWS",
 			"points": [
 				{
 					"x": 763.2653061224489,
@@ -445,18 +477,21 @@
 					"x": 700,
 					"y": 214.16666666666666
 				}
+			],
+			"source": "HMI",
+			"target": "EWS",
+			"vul": [
+				"Improper_File_Access",
+				"Deserialization_of_Untrusted_Data"
+			],
+			"condition": [
+				"CodeSys_File",
+				"CodeSys"
 			]
 		},
 		{
-			"source": "EWS",
-			"target": "PLC1",
-			"vul": [
-				"PLC_Weak_Password_Recovery"
-			],
-			"condition": [
-				"Modicon_M340_CPU",
-				"Modbus"
-			],
+			"from": "EWS",
+			"to": "PLC1",
 			"points": [
 				{
 					"x": 697.3684210526316,
@@ -470,19 +505,20 @@
 					"x": 750,
 					"y": 277.5
 				}
+			],
+			"source": "EWS",
+			"target": "PLC1",
+			"vul": [
+				"PLC_Weak_Password_Recovery"
+			],
+			"condition": [
+				"Modicon_M340_CPU",
+				"Modbus"
 			]
 		},
 		{
-			"source": "PLC1",
-			"target": "PLC2",
-			"vul": [
-				"Improper_Check",
-				"Modbus_Lack_of_Authentication"
-			],
-			"condition": [
-				"Modbus",
-				"Modicon_Quantum_CPU"
-			],
+			"from": "PLC1",
+			"to": "PLC2",
 			"points": [
 				{
 					"x": 850,
@@ -496,18 +532,21 @@
 					"x": 900,
 					"y": 277.5
 				}
+			],
+			"source": "PLC1",
+			"target": "PLC2",
+			"vul": [
+				"Improper_Check",
+				"Modbus_Lack_of_Authentication"
+			],
+			"condition": [
+				"Modbus",
+				"Modicon_Quantum_CPU"
 			]
 		},
 		{
-			"source": "PLC2",
-			"target": "Valve",
-			"func": [
-				"Open_Close_Change"
-			],
-			"condition": [
-				"PLC_Switch_Control",
-				"PLC_Logic_Control"
-			],
+			"from": "PLC2",
+			"to": "Valve",
 			"points": [
 				{
 					"x": 970.6896551724138,
@@ -521,17 +560,20 @@
 					"x": 1050,
 					"y": 60
 				}
+			],
+			"source": "PLC2",
+			"target": "Valve",
+			"func": [
+				"Open_Close_Change"
+			],
+			"condition": [
+				"PLC_Switch_Control",
+				"PLC_Logic_Control"
 			]
 		},
 		{
-			"source": "PLC2",
-			"target": "Sensor",
-			"func": [
-				"Abnormal_Show"
-			],
-			"condition": [
-				"PLC_Analog_Control"
-			],
+			"from": "PLC2",
+			"to": "Sensor",
 			"points": [
 				{
 					"x": 1000,
@@ -545,19 +587,19 @@
 					"x": 1050,
 					"y": 230
 				}
+			],
+			"source": "PLC2",
+			"target": "Sensor",
+			"func": [
+				"Abnormal_Show"
+			],
+			"condition": [
+				"PLC_Analog_Control"
 			]
 		},
 		{
-			"source": "PLC2",
-			"target": "Reactor",
-			"func": [
-				"Abnormal_Operation",
-				"Deviation_Setpoint"
-			],
-			"condition": [
-				"PLC_Analog_Control",
-				"PLC_Logic_Control"
-			],
+			"from": "PLC2",
+			"to": "Reactor",
 			"points": [
 				{
 					"x": 986.7346938775511,
@@ -571,12 +613,17 @@
 					"x": 1050,
 					"y": 400
 				}
+			],
+			"source": "PLC2",
+			"target": "Reactor",
+			"func": [
+				"Abnormal_Operation",
+				"Deviation_Setpoint"
+			],
+			"condition": [
+				"PLC_Analog_Control",
+				"PLC_Logic_Control"
 			]
-		}
-	],
-	"goal": [
-		{
-			"host": "Reactor"
 		}
 	]
 }

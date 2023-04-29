@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
-import topology from "../assets/topology3WithLoc.json"
+import modelJson from "../assets/topology2Model.json"
 import { onMounted } from "vue"
 
 function stringify(node) {
@@ -63,29 +63,10 @@ onMounted(() => {
     $(go.Shape),
     $(go.Shape, { toArrow: "Standard" })
   )
-  const nodeDataArray = []
-  const linkDataArray = []
-  const i18nMap = new Map([
-    [ "Attacker", "攻击者" ],
-    [ "WS", "工作站" ],
-    [ "DNS", "DNS服务器" ],
-    [ "OPC", "OPC服务器" ],
-    [ "Historian", "历史数据库"] ,
-    [ "EWS", "工程师站" ],
-    [ "HMI", "HMI" ],
-    [ "PLC1", "PLC1" ],
-    [ "PLC2", "PLC2" ],
-    [ "Valve", "阀门" ],
-    [ "Reactor", "反应釜" ],
-    [ "Sensor", "传感器" ]
-  ])
-  for (let host of topology.hosts) {
-    nodeDataArray.push({ key: host.host_name, ...host, name: i18nMap.get(host.host_name) })
-  }
-  for (let edge of topology.edges) {
-    linkDataArray.push({ from: edge.source, to: edge.target, ...edge })
-  }
-  topo.model = new go.GraphLinksModel(nodeDataArray, linkDataArray)
+  topo.model = go.Model.fromJson(modelJson)
+  window.print = () => {
+		console.log(JSON.stringify(JSON.parse(topo.model.toJson()), null, "\t"))
+	}
 })
 
 </script>
