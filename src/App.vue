@@ -55,6 +55,12 @@
           <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
           <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" />
           <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
+          <div class="charts">
+            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart1'" :y-name="'real_time'" />
+            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart1'" :y-name="'max_mem'" />
+            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart2'" :y-name="'real_time'" />
+            <Chart class="display" v-if="activeIndex == '5'" :chart-num="'chart2'" :y-name="'max_mem'" />
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -68,6 +74,7 @@ import Topology2 from './components/Topology2.vue'
 import Topology3 from './components/Topology3.vue'
 import AttackPath from './components/AttackPath.vue'
 import AttackGraph from './components/AttackGraph.vue'
+import Chart from './components/Chart.vue'
 import topology3ModelJson from "./assets/topology3Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
 import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
@@ -127,5 +134,18 @@ function revertModel() {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+}
+
+div.charts {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.charts > div {
+  width: 50%;
+  height: 50%;
 }
 </style>
