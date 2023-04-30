@@ -45,7 +45,7 @@ onMounted(() => {
     $(go.Shape, "Rectangle", new go.Binding("fill", "sorts", s => analyse && s[3] == 1 ? "#F9BCE0" : "#e3f0f5" )),
     $(go.TextBlock, 
       { margin: 5, textAlign: "center" },
-      new go.Binding("text", "key")
+      new go.Binding("text", "", n => `${n.index}: ${n.key}`)
     ),
     analyse ? {
       toolTip: $("ToolTip", 

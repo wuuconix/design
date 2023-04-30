@@ -3,7 +3,8 @@
 	"nodeDataArray": [
 		{
 			"key": "Print_Improper_Privilege_Management(Attacker,WS)",
-			"loc": "657.5 12.5",
+			"index": 0,
+			"loc": "690.5 12.5",
 			"centers": [
 				0,
 				0.0248,
@@ -19,7 +20,8 @@
 		},
 		{
 			"key": "DNS_Remote_Code_Execution(WS,DNS)",
-			"loc": "378.5 87.5",
+			"index": 1,
+			"loc": "381.5 162.5",
 			"centers": [
 				0.01,
 				0.009,
@@ -35,7 +37,8 @@
 		},
 		{
 			"key": "OPC_Improper_Authentication(DNS,OPC)",
-			"loc": "252.5 162.5",
+			"index": 2,
+			"loc": "246.5 237.5",
 			"centers": [
 				0.026,
 				0.012,
@@ -51,7 +54,8 @@
 		},
 		{
 			"key": "OPC_Heap_Bufferflow(DNS,OPC)",
-			"loc": "527 162.5",
+			"index": 3,
+			"loc": "537.5 237.5",
 			"centers": [
 				0.042,
 				0.026,
@@ -67,7 +71,8 @@
 		},
 		{
 			"key": "Improper_File_Access(OPC,EWS)",
-			"loc": "116 237.5",
+			"index": 4,
+			"loc": "101 312.5",
 			"centers": [
 				0.066,
 				0.022,
@@ -83,7 +88,8 @@
 		},
 		{
 			"key": "Deserialization_of_Untrusted_Data(OPC,EWS)",
-			"loc": "389 237.5",
+			"index": 5,
+			"loc": "392 312.5",
 			"centers": [
 				0.079,
 				0.028,
@@ -99,7 +105,8 @@
 		},
 		{
 			"key": "PLC_Weak_Password_Recovery(EWS,PLC1)",
-			"loc": "252.5 312.5",
+			"index": 6,
+			"loc": "687.5 392.5",
 			"centers": [
 				0.182,
 				0.035,
@@ -115,7 +122,8 @@
 		},
 		{
 			"key": "Modbus_Lack_of_Authentication(PLC1,PLC2)",
-			"loc": "125 387.5",
+			"index": 7,
+			"loc": "551 467.5",
 			"centers": [
 				0.185,
 				0.042,
@@ -131,7 +139,8 @@
 		},
 		{
 			"key": "Improper_Check(PLC1,PLC2)",
-			"loc": "380 387.5",
+			"index": 8,
+			"loc": "824 467.5",
 			"centers": [
 				0.187,
 				0.059,
@@ -147,7 +156,8 @@
 		},
 		{
 			"key": "Abnormal_Operation(PLC2,Reactor)",
-			"loc": "252.5 462.5",
+			"index": 9,
+			"loc": "687.5 542.5",
 			"centers": [
 				0.188,
 				0.045,
@@ -163,7 +173,8 @@
 		},
 		{
 			"key": "Oracle_Out_of_bounds_Write(WS,Historian)",
-			"loc": "941 87.5",
+			"index": 10,
+			"loc": "983 87.5",
 			"centers": [
 				0.007,
 				0.013,
@@ -179,7 +190,8 @@
 		},
 		{
 			"key": "OPC_Improper_Authentication(Historian,OPC)",
-			"loc": "797 162.5",
+			"index": 11,
+			"loc": "827 162.5",
 			"centers": [
 				0.024,
 				0.012,
@@ -195,7 +207,8 @@
 		},
 		{
 			"key": "OPC_Heap_Bufferflow(Historian,OPC)",
-			"loc": "1085 162.5",
+			"index": 12,
+			"loc": "1139 162.5",
 			"centers": [
 				0.039,
 				0.026,
@@ -211,7 +224,8 @@
 		},
 		{
 			"key": "HMI_Improper_Access_Control(OPC,HMI)",
-			"loc": "941 237.5",
+			"index": 13,
+			"loc": "983 237.5",
 			"centers": [
 				0.043,
 				0.015,
@@ -227,7 +241,8 @@
 		},
 		{
 			"key": "Improper_File_Access(HMI,EWS)",
-			"loc": "663.5 312.5",
+			"index": 14,
+			"loc": "827 312.5",
 			"centers": [
 				0.06,
 				0.022,
@@ -243,7 +258,8 @@
 		},
 		{
 			"key": "Deserialization_of_Untrusted_Data(HMI,EWS)",
-			"loc": "1077.5 312.5",
+			"index": 15,
+			"loc": "1131.5 312.5",
 			"centers": [
 				0.076,
 				0.028,
@@ -266,16 +282,24 @@
 			"target": "DNS_Remote_Code_Execution(WS,DNS)",
 			"points": [
 				{
-					"x": 564.5,
+					"x": 587.5,
 					"y": 25
 				},
 				{
-					"x": 378.5,
+					"x": 381.5,
 					"y": 50
 				},
 				{
-					"x": 378.5,
-					"y": 75
+					"x": 381.5,
+					"y": 87.5
+				},
+				{
+					"x": 381.5,
+					"y": 125
+				},
+				{
+					"x": 381.5,
+					"y": 150
 				}
 			]
 		},
@@ -287,15 +311,15 @@
 			"points": [
 				{
 					"x": 336.5,
-					"y": 100
+					"y": 175
 				},
 				{
-					"x": 252.5,
-					"y": 125
+					"x": 246.5,
+					"y": 200
 				},
 				{
-					"x": 252.5,
-					"y": 150
+					"x": 246.5,
+					"y": 225
 				}
 			]
 		},
@@ -306,16 +330,16 @@
 			"target": "OPC_Heap_Bufferflow(DNS,OPC)",
 			"points": [
 				{
-					"x": 428,
-					"y": 100
+					"x": 433.5,
+					"y": 175
 				},
 				{
-					"x": 527,
-					"y": 125
+					"x": 537.5,
+					"y": 200
 				},
 				{
-					"x": 527,
-					"y": 150
+					"x": 537.5,
+					"y": 225
 				}
 			]
 		},
@@ -326,16 +350,16 @@
 			"target": "Improper_File_Access(OPC,EWS)",
 			"points": [
 				{
-					"x": 207,
-					"y": 175
+					"x": 198,
+					"y": 250
 				},
 				{
-					"x": 116,
-					"y": 200
+					"x": 101,
+					"y": 275
 				},
 				{
-					"x": 116,
-					"y": 225
+					"x": 101,
+					"y": 300
 				}
 			]
 		},
@@ -346,16 +370,16 @@
 			"target": "Deserialization_of_Untrusted_Data(OPC,EWS)",
 			"points": [
 				{
-					"x": 298,
-					"y": 175
+					"x": 295,
+					"y": 250
 				},
 				{
-					"x": 389,
-					"y": 200
+					"x": 392,
+					"y": 275
 				},
 				{
-					"x": 389,
-					"y": 225
+					"x": 392,
+					"y": 300
 				}
 			]
 		},
@@ -366,16 +390,16 @@
 			"target": "PLC_Weak_Password_Recovery(EWS,PLC1)",
 			"points": [
 				{
-					"x": 116,
-					"y": 250
+					"x": 101,
+					"y": 325
 				},
 				{
-					"x": 116,
-					"y": 275
+					"x": 101,
+					"y": 349
 				},
 				{
-					"x": 207,
-					"y": 300
+					"x": 542,
+					"y": 382
 				}
 			]
 		},
@@ -386,16 +410,16 @@
 			"target": "PLC_Weak_Password_Recovery(EWS,PLC1)",
 			"points": [
 				{
-					"x": 389,
-					"y": 250
+					"x": 392,
+					"y": 325
 				},
 				{
-					"x": 389,
-					"y": 275
+					"x": 392,
+					"y": 351
 				},
 				{
-					"x": 298,
-					"y": 300
+					"x": 597,
+					"y": 380
 				}
 			]
 		},
@@ -406,16 +430,16 @@
 			"target": "Modbus_Lack_of_Authentication(PLC1,PLC2)",
 			"points": [
 				{
-					"x": 210,
-					"y": 325
+					"x": 642,
+					"y": 405
 				},
 				{
-					"x": 125,
-					"y": 350
+					"x": 551,
+					"y": 430
 				},
 				{
-					"x": 125,
-					"y": 375
+					"x": 551,
+					"y": 455
 				}
 			]
 		},
@@ -426,16 +450,16 @@
 			"target": "Improper_Check(PLC1,PLC2)",
 			"points": [
 				{
-					"x": 295,
-					"y": 325
+					"x": 733,
+					"y": 405
 				},
 				{
-					"x": 380,
-					"y": 350
+					"x": 824,
+					"y": 430
 				},
 				{
-					"x": 380,
-					"y": 375
+					"x": 824,
+					"y": 455
 				}
 			]
 		},
@@ -446,16 +470,16 @@
 			"target": "Abnormal_Operation(PLC2,Reactor)",
 			"points": [
 				{
-					"x": 125,
-					"y": 400
+					"x": 551,
+					"y": 480
 				},
 				{
-					"x": 125,
-					"y": 425
+					"x": 551,
+					"y": 505
 				},
 				{
-					"x": 210,
-					"y": 450
+					"x": 642,
+					"y": 530
 				}
 			]
 		},
@@ -466,16 +490,16 @@
 			"target": "Abnormal_Operation(PLC2,Reactor)",
 			"points": [
 				{
-					"x": 380,
-					"y": 400
+					"x": 824,
+					"y": 480
 				},
 				{
-					"x": 380,
-					"y": 425
+					"x": 824,
+					"y": 505
 				},
 				{
-					"x": 295,
-					"y": 450
+					"x": 733,
+					"y": 530
 				}
 			]
 		},
@@ -486,15 +510,15 @@
 			"target": "Oracle_Out_of_bounds_Write(WS,Historian)",
 			"points": [
 				{
-					"x": 752,
+					"x": 788,
 					"y": 25
 				},
 				{
-					"x": 941,
+					"x": 983,
 					"y": 50
 				},
 				{
-					"x": 941,
+					"x": 983,
 					"y": 75
 				}
 			]
@@ -506,15 +530,15 @@
 			"target": "OPC_Improper_Authentication(Historian,OPC)",
 			"points": [
 				{
-					"x": 893,
+					"x": 931,
 					"y": 100
 				},
 				{
-					"x": 797,
+					"x": 827,
 					"y": 125
 				},
 				{
-					"x": 797,
+					"x": 827,
 					"y": 150
 				}
 			]
@@ -526,15 +550,15 @@
 			"target": "OPC_Heap_Bufferflow(Historian,OPC)",
 			"points": [
 				{
-					"x": 989,
+					"x": 1035,
 					"y": 100
 				},
 				{
-					"x": 1085,
+					"x": 1139,
 					"y": 125
 				},
 				{
-					"x": 1085,
+					"x": 1139,
 					"y": 150
 				}
 			]
@@ -546,15 +570,15 @@
 			"target": "HMI_Improper_Access_Control(OPC,HMI)",
 			"points": [
 				{
-					"x": 797,
+					"x": 827,
 					"y": 175
 				},
 				{
-					"x": 797,
+					"x": 827,
 					"y": 200
 				},
 				{
-					"x": 893,
+					"x": 931,
 					"y": 225
 				}
 			]
@@ -566,15 +590,15 @@
 			"target": "HMI_Improper_Access_Control(OPC,HMI)",
 			"points": [
 				{
-					"x": 1085,
+					"x": 1139,
 					"y": 175
 				},
 				{
-					"x": 1085,
+					"x": 1139,
 					"y": 200
 				},
 				{
-					"x": 989,
+					"x": 1035,
 					"y": 225
 				}
 			]
@@ -586,15 +610,15 @@
 			"target": "Improper_File_Access(HMI,EWS)",
 			"points": [
 				{
-					"x": 848.5,
+					"x": 931,
 					"y": 250
 				},
 				{
-					"x": 663.5,
+					"x": 827,
 					"y": 275
 				},
 				{
-					"x": 663.5,
+					"x": 827,
 					"y": 300
 				}
 			]
@@ -606,16 +630,56 @@
 			"target": "Deserialization_of_Untrusted_Data(HMI,EWS)",
 			"points": [
 				{
-					"x": 986.5,
+					"x": 1032.5,
 					"y": 250
 				},
 				{
-					"x": 1077.5,
+					"x": 1131.5,
 					"y": 275
 				},
 				{
-					"x": 1077.5,
+					"x": 1131.5,
 					"y": 300
+				}
+			]
+		},
+		{
+			"from": "Improper_File_Access(HMI,EWS)",
+			"to": "PLC_Weak_Password_Recovery(EWS,PLC1)",
+			"source": "Improper_File_Access(HMI,EWS)",
+			"target": "PLC_Weak_Password_Recovery(EWS,PLC1)",
+			"points": [
+				{
+					"x": 827,
+					"y": 325
+				},
+				{
+					"x": 827,
+					"y": 351
+				},
+				{
+					"x": 730,
+					"y": 380
+				}
+			]
+		},
+		{
+			"from": "Deserialization_of_Untrusted_Data(HMI,EWS)",
+			"to": "PLC_Weak_Password_Recovery(EWS,PLC1)",
+			"source": "Deserialization_of_Untrusted_Data(HMI,EWS)",
+			"target": "PLC_Weak_Password_Recovery(EWS,PLC1)",
+			"points": [
+				{
+					"x": 1132,
+					"y": 325
+				},
+				{
+					"x": 1132,
+					"y": 349
+				},
+				{
+					"x": 816,
+					"y": 380
 				}
 			]
 		}

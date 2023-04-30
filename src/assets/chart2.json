@@ -1,0 +1,130 @@
+[
+  {
+    "index": 0,
+    "name": "Print_Improper_Privilege_Management(Attacker,WS)",
+    "deg": 0.133,
+    "BC'": 0,
+    "CC'": 0.025,
+    "IEC": 0.303
+  },
+  {
+    "index": 1,
+    "name": "DNS_Remote_Code_Execution(WS,DNS)",
+    "deg": 0.133,
+    "BC'": 0.010,
+    "CC'": 0.009,
+    "IEC": 0.047
+  },
+  {
+    "index": 2,
+    "name": "OPC_Improper_Authentication(DNS,OPC)",
+    "deg": 0.133,
+    "BC'": 0.026,
+    "CC'": 0.012,
+    "IEC": 0.052
+  },
+  {
+    "index": 3,
+    "name": "OPC_Heap_Bufferflow(DNS,OPC)",
+    "deg": 0.2,
+    "BC'": 0.042,
+    "CC'": 0.026,
+    "IEC": 0.011
+  },
+  {
+    "index": 4,
+    "name": "Improper_File_Access(OPC,EWS)",
+    "deg": 0.2,
+    "BC'": 0.066,
+    "CC'": 0.022,
+    "IEC": 0.127
+  },
+  {
+    "index": 5,
+    "name": "Deserialization_of_Untrusted_Data(OPC,EWS)",
+    "deg": 0.133,
+    "BC'": 0.079,
+    "CC'": 0.028,
+    "IEC": 0.067
+  },
+  {
+    "index": 6,
+    "name": "PLC_Weak_Password_Recovery(EWS,PLC1)",
+    "deg": 0.2,
+    "BC'": 0.182,
+    "CC'": 0.035,
+    "IEC": 0.088
+  },
+  {
+    "index": 7,
+    "name": "Modbus_Lack_of_Authentication(PLC1,PLC2)",
+    "deg": 0.133,
+    "BC'": 0.185,
+    "CC'": 0.042,
+    "IEC": 0.098
+  },
+  {
+    "index": 8,
+    "name": "Improper_Check(PLC1,PLC2)",
+    "deg": 0.133,
+    "BC'": 0.187,
+    "CC'": 0.059,
+    "IEC": 0.003
+  },
+  {
+    "index": 9,
+    "name": "Abnormal_Operation(PLC2,Reactor)",
+    "deg": 0.067,
+    "BC'": 0.188,
+    "CC'": 0.045,
+    "IEC": 0.011
+  },
+  {
+    "index": 10,
+    "name": "Oracle_Out_of_bounds_Write(WS,Historian)",
+    "deg": 0.133,
+    "BC'": 0.007,
+    "CC'": 0.013,
+    "IEC": 0.465
+  },
+  {
+    "index": 11,
+    "name": "OPC_Improper_Authentication(Historian,OPC)",
+    "deg": 0.133,
+    "BC'": 0.024,
+    "CC'": 0.012,
+    "IEC": 0.465
+  },
+  {
+    "index": 12,
+    "name": "OPC_Heap_Bufferflow(Historian,OPC)",
+    "deg": 0.2,
+    "BC'": 0.039,
+    "CC'": 0.026,
+    "IEC": 0.034
+  },
+  {
+    "index": 13,
+    "name": "HMI_Improper_Access_Control(OPC,HMI)",
+    "deg": 0.2,
+    "BC'": 0.043,
+    "CC'": 0.015,
+    "IEC": 0.063
+  },
+  {
+    "index": 14,
+    "name": "Improper_File_Access(HMI,EWS)",
+    "deg": 0.133,
+    "BC'": 0.060,
+    "CC'": 0.022,
+    "IEC": 0.040
+  },
+  {
+    "index": 15,
+    "name": "Deserialization_of_Untrusted_Data(HMI,EWS)",
+    "deg": 0.133,
+    "BC'": 0.076,
+    "CC'": 0.028,
+    "IEC": 0.021
+  }
+]

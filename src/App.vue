@@ -49,6 +49,27 @@
             <el-button type="primary" round @click="isGraphUpdate = false">还原</el-button>
           </el-row>
         </el-aside>
+        <el-aside width="30vw" v-if="activeIndex == '4-2'"  style="justify-content: center;">
+          <el-row>
+            <el-select v-model="yName" class="m-2" placeholder="选择中心值">
+              <el-option
+                v-for="item in centerYnameOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+            <el-select v-model="sort" class="m-2" placeholder="选择排序方式">
+              <el-option
+                v-for="item in centerSortOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-row>
+          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName" />
+        </el-aside>
         <el-main>
           <Topology1 class="display" v-if="activeIndex == '1-1'" />
           <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" />
@@ -76,6 +97,7 @@ import Topology3 from './components/Topology3.vue'
 import AttackPath from './components/AttackPath.vue'
 import AttackGraph from './components/AttackGraph.vue'
 import Chart from './components/Chart.vue'
+import Chart2 from './components/Chart2.vue'
 import topology3ModelJson from "./assets/topology3Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
 import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
@@ -86,6 +108,42 @@ const activeIndex = ref('3-1')
 const cascaderValue = ref('')
 const isGraphUpdate = ref(false)
 
+const yName = ref("")
+const sort = ref("不排序")
+
+const centerYnameOptions = [
+	{
+		value: "BC'",
+		label: "BC' 介数中心性",
+	},
+	{
+		value: "CC'",
+		label: "CC' 接近中心性"
+	},
+	{
+		value: "IEC",
+		label: "IEC 边期望中心性"
+	},
+	{
+		value: "deg",
+		label: "deg 度中心性"
+	}
+]
+
+const centerSortOptions = [
+  {
+    value: "none",
+    label: "不排序"
+  },
+  {
+    value: "asc",
+    label: "正序"
+  },
+  {
+    value: "desc",
+    label: "倒序"
+  }
+]
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
   activeIndex.value = key
