@@ -7,6 +7,15 @@ import { onMounted, watch } from "vue"
 import * as echarts from "echarts"
 import chartData from "../assets/chart2.json"
 
+const props = defineProps<{
+	yName: "BC'" | "CC'" | "IEC" | "deg" | "D+" | "D-" | "C",
+	sort: "none" | "asc" | "desc",
+}>()
+
+const emit = defineEmits<{
+	(e: 'highlight', key: string): void
+}>()
+
 function sortChartData(): typeof chartData {
 	const data: typeof chartData = JSON.parse(JSON.stringify(chartData))
 	if (props.sort == "asc") {
@@ -17,13 +26,6 @@ function sortChartData(): typeof chartData {
 		return data
 	}
 }
-
-const props = defineProps<{
-	yName: "BC'" | "CC'" | "IEC" | "deg" | "D+" | "D-" | "C",
-	sort: "none" | "asc" | "desc",
-}>()
-
-let chart: echarts.ECharts
 
 const colorMap = new Map([
 	["BC'", "#5470c6"],
@@ -79,9 +81,14 @@ function fresh() {
 	chart.setOption(option)
 }
 
+let chart: echarts.ECharts
+
 onMounted(() => {
 	chart = echarts.init(document.querySelector("#chart2")!)
 	fresh()
+	chart.on("click", ({ name }) => {
+		emit("highlight", name.split(" ")[1])
+	})
 })
 
 watch(

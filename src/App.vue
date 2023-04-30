@@ -68,13 +68,13 @@
               />
             </el-select>
           </el-row>
-          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName"/>
+          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName" @highlight="(key) => highlightKey = key"/>
         </el-aside>
         <el-main>
           <Topology1 class="display" v-if="activeIndex == '1-1'" />
           <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" />
           <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
-          <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" />
+          <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" :highlight-key="highlightKey"/>
           <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
           <div class="charts" v-if="activeIndex == '5'">
             <Chart class="display" :chart-num="'chart1'" :y-name="'real_time'" />
@@ -107,6 +107,7 @@ let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(
 const activeIndex = ref('3-1')
 const cascaderValue = ref('')
 const isGraphUpdate = ref(false)
+const highlightKey = ref('')
 
 const yName = ref("C")
 const sort = ref("desc")

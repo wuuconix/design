@@ -4,11 +4,12 @@
 
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
-import { onMounted } from "vue"
+import { onMounted, watch } from "vue"
 import modelJson from "../assets/attackPathModel.json"
 
-const { analyse } = defineProps<{
-  analyse: boolean
+const props = defineProps<{
+  analyse: boolean,
+  highlightKey: string
 }>()
 
 function stringify(node) {
@@ -33,21 +34,27 @@ C:  ${node.sorts[2]}
   return res
 }
 
+let atp: go.Diagram
+
 onMounted(() => {
   const $ = go.GraphObject.make
-  const atp = new go.Diagram("attackPath")
+  atp = new go.Diagram("attackPath")
   atp.undoManager.isEnabled = true
   atp.toolManager.hoverDelay = 100
   atp.toolManager.toolTipDuration = 100000
   atp.nodeTemplate = $(go.Node, "Auto",
     { locationSpot: go.Spot.Center },
     new go.Binding("location", "loc", go.Point.parse),
-    $(go.Shape, "Rectangle", new go.Binding("fill", "sorts", s => analyse && s[3] == 1 ? "#F9BCE0" : "#e3f0f5" )),
+    $(go.Shape, "Rectangle", 
+      new go.Binding("fill", "sorts", s => props.analyse && s[3] == 1 ? "#F9BCE0" : "#e3f0f5" ),
+      new go.Binding("stroke", "isHighlighted", h => h ? "#409EFF" : "black").ofObject(),
+      new go.Binding("strokeWidth", "isHighlighted", h => h ? 2 : 1).ofObject()
+    ),
     $(go.TextBlock, 
       { margin: 5, textAlign: "center" },
       new go.Binding("text", "", n => `${n.index}: ${n.key}`)
     ),
-    analyse ? {
+    props.analyse ? {
       toolTip: $("ToolTip", 
         $(go.TextBlock, { margin: 5 },
           new go.Binding("text", "", n => stringify(n))
@@ -69,8 +76,21 @@ onMounted(() => {
   window.print = () => {
 		console.log(JSON.stringify(JSON.parse(atp.model.toJson()), null, "\t"))
 	}
+  window.highlight = highlight
 })
 
+function highlight(key: string) {
+  atp.startTransaction("highlight")
+  atp.clearHighlighteds()
+  const node = atp.findNodeForKey(key)
+  atp.highlight(node)
+  atp.commitTransaction("highlight")
+}
+
+watch(
+  () => props.highlightKey,
+  (key) => highlight(key)
+)
 </script>
 <style scoped>
 </style>
