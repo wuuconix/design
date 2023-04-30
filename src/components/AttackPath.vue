@@ -9,7 +9,9 @@ import modelJson from "../assets/attackPathModel.json"
 
 const props = defineProps<{
   analyse: boolean,
-  highlightKey: string
+  highlightKey: string,
+  focus: boolean,
+  opacity: number
 }>()
 
 function stringify(node) {
@@ -35,16 +37,16 @@ C:  ${node.sorts[2]}
 }
 
 let atp: go.Diagram
+const $ = go.GraphObject.make
 
-onMounted(() => {
-  const $ = go.GraphObject.make
-  atp = new go.Diagram("attackPath")
+function init() {
   atp.undoManager.isEnabled = true
   atp.toolManager.hoverDelay = 100
   atp.toolManager.toolTipDuration = 100000
   atp.nodeTemplate = $(go.Node, "Auto",
     { locationSpot: go.Spot.Center },
     new go.Binding("location", "loc", go.Point.parse),
+    props.focus ? new go.Binding("opacity", "isHighlighted", h => h ? 1 : props.opacity).ofObject() : {},
     $(go.Shape, "Rectangle", 
       new go.Binding("fill", "sorts", s => props.analyse && s[3] == 1 ? "#F9BCE0" : "#e3f0f5" ),
       new go.Binding("stroke", "isHighlighted", h => h ? "#409EFF" : "black").ofObject(),
@@ -68,15 +70,20 @@ onMounted(() => {
       adjusting: go.Link.Scale,
       reshapable: true, relinkableFrom: true, relinkableTo: true,
     },
+    new go.Binding("points", "points"),
+    new go.Binding("opacity", "", () => props.focus ? props.opacity : 1),
 		$(go.Shape),
     $(go.Shape, { toArrow: "Standard" }),
-    new go.Binding("points", "points")
   )
   atp.model = go.Model.fromJson(modelJson)
+}
+
+onMounted(() => {
+  atp = new go.Diagram("attackPath")
+  init()
   window.print = () => {
 		console.log(JSON.stringify(JSON.parse(atp.model.toJson()), null, "\t"))
 	}
-  window.highlight = highlight
 })
 
 function highlight(key: string) {
@@ -91,6 +98,25 @@ watch(
   () => props.highlightKey,
   (key) => highlight(key)
 )
+
+watch(
+  () => props.focus,
+  () => {
+    atp.clear()
+    init()
+  }
+)
+
+watch(
+  () => props.opacity,
+  () => {
+    if (props.focus) {
+      atp.clear()
+      init()
+    }
+  }
+)
+
 </script>
 <style scoped>
 </style>

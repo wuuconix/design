@@ -68,13 +68,52 @@
               />
             </el-select>
           </el-row>
-          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName" @highlight="(key) => highlightKey = key"/>
+          <el-row style="width: 100%;">
+            <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName" @highlight="(key) => highlightKey = key" />
+          </el-row>
+          <el-row>
+            <el-alert
+              title="Tips"
+              type="info"
+              description="点击柱状图的柱子可以高亮显示攻击路径图对应节点"
+              show-icon
+              style="margin-bottom: 12px;"
+              :closable="false"
+            />
+          </el-row>
+          <el-row>
+            <el-form-item label="突出显示所选节点&淡化其他节点">
+              <el-switch
+                v-model="focus"
+                class="mt-2"
+                style="margin-left: 24px"
+                inline-prompt
+                :active-icon="Check"
+                :inactive-icon="Close"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row>
+            <el-form-item label="非高亮节点透明度">
+              <el-slider v-model="opacity" :format-tooltip="(num: number) => num / 100" />
+            </el-form-item>
+          </el-row>
+          <el-row>
+            <el-button type="primary" plain @click="highlightKey = ''">清除攻击步骤图中的高亮</el-button>
+          </el-row>
         </el-aside>
         <el-main>
           <Topology1 class="display" v-if="activeIndex == '1-1'" />
           <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" />
           <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
-          <AttackPath class="display" v-if="['2-2', '4-2'].includes(activeIndex)" :analyse="activeIndex == '4-2'" :highlight-key="highlightKey"/>
+          <AttackPath
+            class="display" 
+            v-if="['2-2', '4-2'].includes(activeIndex)" 
+            :analyse="activeIndex == '4-2'" 
+            :highlight-key="highlightKey"
+            :focus="focus"
+            :opacity="opacity / 100"
+          />
           <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
           <div class="charts" v-if="activeIndex == '5'">
             <Chart class="display" :chart-num="'chart1'" :y-name="'real_time'" />
@@ -102,15 +141,17 @@ import topology3ModelJson from "./assets/topology3Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
 import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
 import ModelJsonViewer from './components/ModelJsonViewer.vue'
+import { Check, Close } from '@element-plus/icons-vue'
 
 let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(JSON.stringify(topology3ModelJson)))
 const activeIndex = ref('3-1')
 const cascaderValue = ref('')
 const isGraphUpdate = ref(false)
 const highlightKey = ref('')
-
 const yName = ref("C")
 const sort = ref("desc")
+const focus = ref(false)
+const opacity = ref(30)
 
 const centerYnameOptions = [
 	{
@@ -220,5 +261,9 @@ div.charts {
 div.charts > div {
   width: 50%;
   height: 50%;
+}
+
+.el-slider {
+  width: 250px;
 }
 </style>
