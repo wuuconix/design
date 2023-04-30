@@ -51,7 +51,7 @@
         </el-aside>
         <el-aside width="30vw" v-if="activeIndex == '4-2'"  style="justify-content: center;">
           <el-row>
-            <el-select v-model="yName" class="m-2" placeholder="选择中心值">
+            <el-select v-model="yName" class="m-2">
               <el-option
                 v-for="item in centerYnameOptions"
                 :key="item.value"
@@ -59,7 +59,7 @@
                 :value="item.value"
               />
             </el-select>
-            <el-select v-model="sort" class="m-2" placeholder="选择排序方式">
+            <el-select v-model="sort" class="m-2">
               <el-option
                 v-for="item in centerSortOptions"
                 :key="item.value"
@@ -68,7 +68,7 @@
               />
             </el-select>
           </el-row>
-          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName" />
+          <Chart2 style="height: 300px; width: 100%;" :sort="sort" :y-name="yName"/>
         </el-aside>
         <el-main>
           <Topology1 class="display" v-if="activeIndex == '1-1'" />
@@ -108,8 +108,8 @@ const activeIndex = ref('3-1')
 const cascaderValue = ref('')
 const isGraphUpdate = ref(false)
 
-const yName = ref("")
-const sort = ref("不排序")
+const yName = ref("C")
+const sort = ref("desc")
 
 const centerYnameOptions = [
 	{
@@ -127,7 +127,19 @@ const centerYnameOptions = [
 	{
 		value: "deg",
 		label: "deg 度中心性"
-	}
+	},
+  {
+    value: "D+",
+    label: "D+ 与理想点间的距离"
+  },
+  {
+    value: "D-",
+    label: "D- 与负理想点间的距离"
+  },
+  {
+    value: "C",
+    label: "C 最终量化数值"
+  }
 ]
 
 const centerSortOptions = [

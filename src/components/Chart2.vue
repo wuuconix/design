@@ -1,5 +1,5 @@
 <template>
-  <div :id="`test`"></div>
+  <div :id="`chart2`"></div>
 </template>
 
 <script setup lang="ts">
@@ -19,8 +19,8 @@ function sortChartData(): typeof chartData {
 }
 
 const props = defineProps<{
-	yName: "BC'" | "CC'" | "IEC" | "deg",
-	sort: "none" | "asc" | "desc"
+	yName: "BC'" | "CC'" | "IEC" | "deg" | "D+" | "D-" | "C",
+	sort: "none" | "asc" | "desc",
 }>()
 
 let chart: echarts.ECharts
@@ -29,7 +29,10 @@ const colorMap = new Map([
 	["BC'", "#5470c6"],
 	["CC'", "#91cc75"],
 	["IEC", "#fac858"],
-	["deg", "#ee6666"]
+	["deg", "#ee6666"],
+	["D+", "#73c0de"],
+	["D-", "#3ba272"],
+	["C", "#fc8452"]
 ])
 
 function fresh() {
@@ -77,7 +80,7 @@ function fresh() {
 }
 
 onMounted(() => {
-	chart = echarts.init(document.querySelector(`#test`)!)
+	chart = echarts.init(document.querySelector("#chart2")!)
 	fresh()
 })
 
