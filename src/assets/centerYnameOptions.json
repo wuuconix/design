@@ -1,0 +1,30 @@
+[
+	{
+		"value": "BC'",
+		"label": "BC' 介数中心性"
+	},
+	{
+		"value": "CC'",
+		"label": "CC' 接近中心性"
+	},
+	{
+		"value": "IEC",
+		"label": "IEC 边期望中心性"
+	},
+	{
+		"value": "deg",
+		"label": "deg 度中心性"
+	},
+  {
+    "value": "D+",
+    "label": "D+ 与理想点间的距离"
+  },
+  {
+    "value": "D-",
+    "label": "D- 与负理想点间的距离"
+  },
+  {
+    "value": "C",
+    "label": "C 最终量化数值"
+  }
+]

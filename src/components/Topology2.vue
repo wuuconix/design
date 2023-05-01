@@ -8,6 +8,9 @@ import modelJson from "../assets/topology2Model.json"
 import { onMounted } from "vue"
 
 const emit = defineEmits(['updateCVSSInfo'])
+const props = defineProps<{
+  isCVSS: boolean
+}>()
 
 const cvssFullNameMap = {
   AV: {
@@ -48,20 +51,104 @@ const cvssFullNameMap = {
   }
 }
 
+const vulI18nMap = {
+  "Print_Improper_Privilege_Management": "打印机不当权限管理",
+  "DNS_Remote_Code_Execution": "DNS远程命令执行",
+  "OPC_Improper_Authentication": "OPC不当鉴权",
+  "OPC_Heap_Bufferflow": "OPC堆溢出",
+  "Oracle_Out_of_bounds_Write": "Oracle越界写入",
+  "HMI_Improper_Access_Control": "HMI不当访问控制",
+  "Improper_File_Access": "不当文件访问",
+  "Deserialization_of_Untrusted_Data": "不可信数据反序列化",
+  "PLC_Weak_Password_Recovery": "PLC弱密码恢复",
+  "Improper_Check": "不当检查",
+  "Modbus_Lack_of_Authentication": "Modbus缺少鉴权",
+  "Open_Close_Change": "开关状态改变",
+  "Abnormal_Operation": "执行异常",
+  "Deviation_Setpoint": "设定点偏差",
+  "Abnormal_Show": "示数无效"
+}
+
+const hostNameI18Map = {
+  "Attacker": "攻击者",
+  "WS": "工作站",
+  "DNS": "DNS服务器",
+  "OPC": "OPC服务器",
+  "Historian": "历史数据库",
+  "HMI": "人机界面HMI",
+  "EWS": "工程师站",
+  "PLC1": "控制器PLC1",
+  "PLC2": "控制器PLC2",
+  "Valve": "阀门",
+  "Reactor": "反应釜",
+  "Sensor": "传感器"
+}
+
 function stringify(node) {
-  const sep = "--------------\n"
-  let res = sep
-  if (node.vuls.length == 0) {
-    return ""
-  } else if (node.vuls.length == 1) {
-    res += `脆弱性名称/功能故障: ${node.vuls[0]}\n指标: ${node.impacts[0]}\n${sep}`
-  } else {
-    for (let i = 0; i < node.vuls.length; i++) {
-      res += `脆弱性名称/功能故障${i + 1}: ${node.vuls[i]}\n指标: ${node.impacts[i]}\n${sep}`
+  if (props.isCVSS) {
+    if (node.vuls.length == 0) {
+      return `--------------
+脆弱性名称/功能故障:
+
+无
+
+--------------
+指标:
+
+无
+
+--------------`
+    } else if (node.vuls.length == 1) {
+      return `--------------
+脆弱性名称/功能故障:
+
+${node.vuls[0]}
+
+--------------
+指标:
+
+${node.impacts[0]}
+
+--------------`
+    } else {
+      return `--------------
+脆弱性名称/功能故障:
+
+${node.vuls[0]}
+
+${node.vuls[1]}
+
+--------------
+指标:
+
+${node.impacts[0]}
+
+${node.impacts[1]}
+
+--------------`
     }
+  } else {
+    return `--------------
+主机:
+
+${node.key} (${hostNameI18Map[node.key]})
+
+--------------
+脆弱性:
+
+${vulsToString(node)}
+
+--------------`
   }
-  res = res.replace(/\n$/g, "")
-  return res
+}
+
+function vulsToString(node: typeof modelJson.nodeDataArray[0]) {
+  let str = ""
+  for (let vul of node.vuls) {
+    str += `${vul} (${vulI18nMap[vul]})\n`
+  }
+  str = str.replace(/\n$/, "")
+  return str == "" ? "无" : str
 }
 
 onMounted(() => {
@@ -84,11 +171,11 @@ onMounted(() => {
     ),
     $(go.TextBlock, 
       { margin: new go.Margin(10, 0, 0, 0) },
-      new go.Binding("text", "name")
+      new go.Binding("text", "key", (key) => hostNameI18Map[key])
     ),
     {
       toolTip: $("ToolTip", 
-        $(go.TextBlock, { margin: 5 },
+        $(go.TextBlock, { margin: 5, font: '16px Times New Roman 宋体' },
           new go.Binding("text", "", n => stringify(n))
         )
       )
@@ -134,8 +221,10 @@ function getCVSSInfo(data: typeof modelJson.nodeDataArray[1]) {
     const impact = data.impacts![i]
     impact.split("/").forEach(kv => {
       const [k, v] = kv.split(":")
+      //@ts-ignore
       temp.cvss[cvssFullNameMap[k].self] = cvssFullNameMap[k][v]
     })
+    //@ts-ignore
     temp.vul.en = data.vuls[i]
     // temp.vul.cn = 
     result.push(temp)

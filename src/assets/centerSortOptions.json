@@ -1,0 +1,14 @@
+[
+  {
+    "value": "none",
+    "label": "不排序"
+  },
+  {
+    "value": "asc",
+    "label": "正序"
+  },
+  {
+    "value": "desc",
+    "label": "倒序"
+  }
+]

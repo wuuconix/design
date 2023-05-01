@@ -9,8 +9,7 @@
 			"privilege": "3",
 			"service": [],
 			"vuls": [],
-			"img": "https://upyun.wuuconix.link/image-attacker.png",
-			"name": "攻击者"
+			"img": "https://upyun.wuuconix.link/image-attacker.png"
 		},
 		{
 			"key": "WS",
@@ -28,8 +27,7 @@
 			"impacts": [
 				"AV:L/E:P/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"name": "工作站"
+			"img": "https://upyun.wuuconix.link/image-pc.png"
 		},
 		{
 			"key": "DNS",
@@ -47,8 +45,7 @@
 			"impacts": [
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-dns.png",
-			"name": "DNS服务器"
+			"img": "https://upyun.wuuconix.link/image-dns.png"
 		},
 		{
 			"key": "OPC",
@@ -69,8 +66,7 @@
 				"AV:N/E:T/UI:N/C:N/I:H/A:N",
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-opc.png",
-			"name": "OPC服务器"
+			"img": "https://upyun.wuuconix.link/image-opc.png"
 		},
 		{
 			"key": "Historian",
@@ -88,8 +84,7 @@
 			"impacts": [
 				"AV:N/E:P/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-historyDb.png",
-			"name": "历史数据库"
+			"img": "https://upyun.wuuconix.link/image-historyDb.png"
 		},
 		{
 			"key": "HMI",
@@ -106,8 +101,7 @@
 			"impacts": [
 				"AV:L/E:T/UI:N/C:N/I:H/A:N"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"name": "HMI"
+			"img": "https://upyun.wuuconix.link/image-pc.png"
 		},
 		{
 			"key": "EWS",
@@ -127,8 +121,7 @@
 				"AV:N/E:N/UI:N/C:H/I:H/A:H",
 				"AV:N/E:P/UI:R/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png",
-			"name": "工程师站"
+			"img": "https://upyun.wuuconix.link/image-pc.png"
 		},
 		{
 			"key": "PLC1",
@@ -146,8 +139,7 @@
 			"impacts": [
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-controller.png",
-			"name": "PLC1"
+			"img": "https://upyun.wuuconix.link/image-controller.png"
 		},
 		{
 			"key": "PLC2",
@@ -167,8 +159,7 @@
 				"AV:N/E:N/UI:R/C:H/I:H/A:H",
 				"AV:N/E:T/UI:N/C:H/I:N/A:N"
 			],
-			"img": "https://upyun.wuuconix.link/image-controller.png",
-			"name": "PLC2"
+			"img": "https://upyun.wuuconix.link/image-controller.png"
 		},
 		{
 			"key": "Valve",
@@ -189,8 +180,7 @@
 			"impacts": [
 				"C:N/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-exce-1.png",
-			"name": "阀门"
+			"img": "https://upyun.wuuconix.link/image-exce-1.png"
 		},
 		{
 			"key": "Reactor",
@@ -213,8 +203,7 @@
 				"C:N/I:N/A:H",
 				"C:N/I:L/A:L"
 			],
-			"img": "https://upyun.wuuconix.link/image-exce-3.png",
-			"name": "反应釜"
+			"img": "https://upyun.wuuconix.link/image-exce-3.png"
 		},
 		{
 			"key": "Sensor",
@@ -234,8 +223,7 @@
 			"impacts": [
 				"C:N/I:N/A:L"
 			],
-			"img": "https://upyun.wuuconix.link/image-pres-sensor.png",
-			"name": "传感器"
+			"img": "https://upyun.wuuconix.link/image-pres-sensor.png"
 		}
 	],
 	"linkDataArray": [

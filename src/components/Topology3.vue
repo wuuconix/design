@@ -20,13 +20,6 @@ ${node.service.length != 0 ? node.service.join("\n") : "无"}
 ${node.vuls.length != 0 ? node.vuls.join("\n") : "无"}
 
 --------------`
-  // for (const key in node) {
-  //   if ([ "key", "loc", "__gohashid", "category", "points", "from", "to", "img" ].includes(key)) {
-  //     continue
-  //   }
-  //   res += `${key}: ${JSON.stringify(node[key]).replace(/"/g, "")}\n`
-  // }
-
   res = res.replace(/\n$/, "")
   return res
 }

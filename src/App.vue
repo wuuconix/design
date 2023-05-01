@@ -2,12 +2,7 @@
   <el-container>
     <el-header>
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-sub-menu index="1">
-          <template #title>系统拓扑</template>
-          <el-menu-item index="1-1">流程工业拓扑图1</el-menu-item>
-          <el-menu-item index="1-2">流程工业拓扑图2</el-menu-item>
-          <el-menu-item index="1-3">Test-Net拓扑图</el-menu-item>
-        </el-sub-menu>
+        <el-menu-item index="1">系统拓扑</el-menu-item>
         <el-sub-menu index="2">
           <template #title>攻击路径规划</template>
           <el-menu-item index="2-1">拓扑展示</el-menu-item>
@@ -40,7 +35,7 @@
           <el-button type="primary" round @click="revertModel">还原拓扑图</el-button>
         </el-row>
       </el-aside>
-      <el-aside width="max(15vh, 220px)" v-if="activeIndex == '3-2'">
+      <el-aside width="max(20vw, 220px)" v-if="activeIndex == '3-2'">
         <el-row>
           <el-alert title="Tips" type="info" show-icon style="margin-bottom: 12px;" :closable="false" description="根据拓扑图更新属性攻击图"/>
         </el-row>
@@ -50,7 +45,7 @@
         </el-row>
       </el-aside>
       <el-aside width="30vw" v-if="activeIndex == '4-1'">
-        <el-alert v-if="cvssInfos.length == 0" title="点击拓扑图中的节点查看CVSS评分细则" type="info" show-icon style="width: 300px" />
+        <el-alert v-if="cvssInfos.length == 0" title="Tips" description="点击拓扑图中的节点查看CVSS评分细则" type="info" show-icon style="width: 300px" />
         <el-card v-for="cvssInfo of cvssInfos" style="width: 450px; margin: 10px;">
           <template #header>
             <div class="card-header">
@@ -105,25 +100,20 @@
         </el-row>
       </el-aside>
       <el-main>
-        <Topology1 class="display" v-if="activeIndex == '1-1'" />
-        <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" @updateCVSSInfo="(data) => handleCVSSUpdate(data)" />
-        <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
-        <AttackPath
-          class="display" 
-          v-if="['2-2', '4-2'].includes(activeIndex)"
-          ref="atp"
-          :analyse="activeIndex == '4-2'" 
-          :focus="activeIndex == '4-2' ? focus : false"
-          :opacity="activeIndex == '4-2' ? opacity / 100 : 1"
-        />
-        <AttackGraph class="display" v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
+        <Topology1 v-if="activeIndex == '1'" />
+        <Topology2 v-if="activeIndex == '2-1'" :isCVSS="false"/>
+        <AttackPath v-if="activeIndex == '2-2'" :analyse="false" :focus="false" :opacity="1" />
+        <Topology3 v-if="activeIndex == '3-1'" :model-json="topology3ModelJsonReactive"/>
+        <Topology2 v-if="activeIndex == '4-1'" :isCVSS="true" @updateCVSSInfo="(data) => handleCVSSUpdate(data)" />
+        <AttackPath v-if="activeIndex == '4-2'" ref="atp" :analyse="true" :focus="focus" :opacity="opacity / 100"/>
+        <AttackGraph v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
         <div class="charts" v-if="activeIndex == '5'">
-          <Chart class="display" :chart-num="'chart1'" :y-name="'real_time'" />
-          <Chart class="display" :chart-num="'chart1'" :y-name="'max_mem'" />
-          <Chart class="display" :chart-num="'chart2'" :y-name="'real_time'" />
-          <Chart class="display" :chart-num="'chart2'" :y-name="'max_mem'" />
+          <Chart :chart-num="'chart1'" :y-name="'real_time'" />
+          <Chart :chart-num="'chart1'" :y-name="'max_mem'" />
+          <Chart :chart-num="'chart2'" :y-name="'real_time'" />
+          <Chart :chart-num="'chart2'" :y-name="'max_mem'" />
         </div>
-        <ModelJsonViewer class="display" v-if="activeIndex == '6'"/>
+        <ModelJsonViewer v-if="activeIndex == '6'"/>
       </el-main>
     </el-container>
   </el-container>
@@ -140,11 +130,13 @@ import Chart from './components/Chart.vue'
 import Chart2 from './components/Chart2.vue'
 import topology3ModelJson from "./assets/topology3Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
-import topology3ServiceVulMap from "./assets/topology3ServiceVulMap.json"
+import centerYnameOptions from "./assets/centerYnameOptions.json"
+import centerSortOptions from "./assets/centerSortOptions.json"
 import ModelJsonViewer from './components/ModelJsonViewer.vue'
 import { Check, Close } from '@element-plus/icons-vue'
 
 let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(JSON.stringify(topology3ModelJson)))
+const cvssInfos = reactive([])
 const activeIndex = ref('3-1')
 const cascaderValue = ref('')
 const isGraphUpdate = ref(false)
@@ -154,52 +146,6 @@ const focus = ref(false)
 const opacity = ref(30)
 const atp = ref(null)
 
-const cvssInfos = reactive([])
-const centerYnameOptions = [
-	{
-		value: "BC'",
-		label: "BC' 介数中心性",
-	},
-	{
-		value: "CC'",
-		label: "CC' 接近中心性"
-	},
-	{
-		value: "IEC",
-		label: "IEC 边期望中心性"
-	},
-	{
-		value: "deg",
-		label: "deg 度中心性"
-	},
-  {
-    value: "D+",
-    label: "D+ 与理想点间的距离"
-  },
-  {
-    value: "D-",
-    label: "D- 与负理想点间的距离"
-  },
-  {
-    value: "C",
-    label: "C 最终量化数值"
-  }
-]
-
-const centerSortOptions = [
-  {
-    value: "none",
-    label: "不排序"
-  },
-  {
-    value: "asc",
-    label: "正序"
-  },
-  {
-    value: "desc",
-    label: "倒序"
-  }
-]
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
   activeIndex.value = key
@@ -221,7 +167,6 @@ function changeModel() {
     const targetVul = select[2]
     const nodeData = topology3ModelJsonReactive.nodeDataArray.find(v => v.host_name == targetHost)
     nodeData!.vuls = nodeData!.vuls.filter(vul => vul != targetVul)
-    topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.to != targetHost || !v.condition.includes(topology3ServiceVulMap[targetVul]))
   } else if (select[0] == "connection") {
     const fromHost = select[1]
     const toHost = select[2]
@@ -242,7 +187,7 @@ function handleCVSSUpdate(data) {
 </script>
 
 <style scoped>
-.display {
+.el-main > div, .el-main > section {
   height: 100%;
 }
 .el-aside, .el-main {
