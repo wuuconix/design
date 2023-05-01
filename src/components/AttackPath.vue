@@ -9,10 +9,11 @@ import modelJson from "../assets/attackPathModel.json"
 
 const props = defineProps<{
   analyse: boolean,
-  highlightKey: string,
   focus: boolean,
   opacity: number
 }>()
+
+defineExpose({ highlight, clearHighlight })
 
 function stringify(node) {
   let res = `--------------
@@ -88,16 +89,16 @@ onMounted(() => {
 
 function highlight(key: string) {
   atp.startTransaction("highlight")
-  atp.clearHighlighteds()
   const node = atp.findNodeForKey(key)
-  atp.highlight(node)
+  node!.isHighlighted = !node!.isHighlighted
   atp.commitTransaction("highlight")
 }
 
-watch(
-  () => props.highlightKey,
-  (key) => highlight(key)
-)
+function clearHighlight() {
+  atp.startTransaction("clearHighlight")
+  atp.clearHighlighteds()
+  atp.commitTransaction("clearHighlight")
+}
 
 watch(
   () => props.focus,
