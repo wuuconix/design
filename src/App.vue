@@ -49,6 +49,22 @@
           <el-button type="primary" round @click="isGraphUpdate = false">还原</el-button>
         </el-row>
       </el-aside>
+      <el-aside width="30vw" v-if="activeIndex == '4-1'">
+        <el-alert v-if="cvssInfos.length == 0" title="点击拓扑图中的节点查看CVSS评分细则" type="info" show-icon style="width: 300px" />
+        <el-card v-for="cvssInfo of cvssInfos" style="width: 450px; margin: 10px;">
+          <template #header>
+            <div class="card-header">
+              <el-alert title="CVSS评分细则" :description="`脆弱性名称/功能故障: ${cvssInfo.vul.en}`" type="info" show-icon :closable="false" />
+            </div>
+          </template>
+          <el-descriptions :column="1" :border="true" style="margin-bottom: 32px">
+            <el-descriptions-item v-for="(value, key) of cvssInfo.cvss" :label="key" label-align="right" align="center">
+              <el-tag>{{ value }}</el-tag>
+            </el-descriptions-item>
+          </el-descriptions>
+        </el-card>
+
+      </el-aside>
       <el-aside width="30vw" v-if="activeIndex == '4-2'">
         <el-row>
           <el-select v-model="yName" class="m-2">
@@ -90,7 +106,7 @@
       </el-aside>
       <el-main>
         <Topology1 class="display" v-if="activeIndex == '1-1'" />
-        <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" />
+        <Topology2 class="display" v-if="['1-2', '2-1', '4-1'].includes(activeIndex)" @updateCVSSInfo="(data) => handleCVSSUpdate(data)" />
         <Topology3 class="display" v-if="['1-3', '3-1'].includes(activeIndex)" :model-json="topology3ModelJsonReactive"/>
         <AttackPath
           class="display" 
@@ -138,6 +154,7 @@ const focus = ref(false)
 const opacity = ref(30)
 const atp = ref(null)
 
+const cvssInfos = reactive([])
 const centerYnameOptions = [
 	{
 		value: "BC'",
@@ -214,6 +231,12 @@ function changeModel() {
 
 function revertModel() {
   Object.assign(topology3ModelJsonReactive, topology3ModelJson)
+}
+
+function handleCVSSUpdate(data) {
+  console.log(data)
+  cvssInfos.length = 0
+  Object.assign(cvssInfos, data)
 }
 
 </script>

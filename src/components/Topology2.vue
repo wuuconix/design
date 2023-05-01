@@ -7,6 +7,47 @@ import go from "gojs/release/go-debug"
 import modelJson from "../assets/topology2Model.json"
 import { onMounted } from "vue"
 
+const emit = defineEmits(['updateCVSSInfo'])
+
+const cvssFullNameMap = {
+  AV: {
+    self: "Attack Vector (AV)",
+    N: "Network (N)",
+    A: "Adjacent (A)",
+    L: "Local (L)",
+    P: "Physical (P)"
+  },
+  UI: {
+    self: "User Interaction (UI)",
+    N: "None (N)",
+    R: "Required (R)"
+  },
+  C: {
+    self: "Confidentiality (C)",
+    N: "None (N)",
+    L: "Low (L)",
+    H: "High (H)"
+  },
+  I: {
+    self: "Integrity (I)",
+    N: "None (N)",
+    L: "Low (L)",
+    H: "High (H)"
+  },
+  A: {
+    self: "Availability (A)",
+    N: "None (N)",
+    L: "Low (L)",
+    H: "High (H)"
+  },
+  E: {
+    self: "Exploit Way (E)",
+    N: "None (N)",
+    T: "Tool (T)",
+    P: "POC (P)",
+  }
+}
+
 function stringify(node) {
   const sep = "--------------\n"
   let res = sep
@@ -51,6 +92,13 @@ onMounted(() => {
           new go.Binding("text", "", n => stringify(n))
         )
       )
+    },
+    { 
+      click: (_, obj) => {
+      const data = getCVSSInfo(obj.part!.data)
+      emit("updateCVSSInfo", data)
+      console.log("emit 成功")
+     }
     }
   )
   topo.linkTemplate = $(go.Link,
@@ -68,6 +116,32 @@ onMounted(() => {
 		console.log(JSON.stringify(JSON.parse(topo.model.toJson()), null, "\t"))
 	}
 })
+
+
+function getCVSSInfo(data: typeof modelJson.nodeDataArray[1]) {
+  const result = []
+  if (!data.impacts) {
+    return {
+      vul: {},
+      cvss: {}
+    }
+  }
+  for (let i = 0; i < data.impacts!.length; i++) {
+    const temp = {
+      vul: {},
+      cvss: {}
+    }
+    const impact = data.impacts![i]
+    impact.split("/").forEach(kv => {
+      const [k, v] = kv.split(":")
+      temp.cvss[cvssFullNameMap[k].self] = cvssFullNameMap[k][v]
+    })
+    temp.vul.en = data.vuls[i]
+    // temp.vul.cn = 
+    result.push(temp)
+  }
+  return result
+}
 
 </script>
 <style scoped>
