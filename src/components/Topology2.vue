@@ -86,52 +86,27 @@ const hostNameI18Map = {
 
 function stringify(node) {
   if (props.isCVSS) {
-    if (node.vuls.length == 0) {
-      return `--------------
+    return `--------------
 脆弱性名称/功能故障:
 
-无
+${vulsToString(node)}
 
 --------------
 指标:
 
-无
+${impactsToString(node)}
 
 --------------`
-    } else if (node.vuls.length == 1) {
-      return `--------------
-脆弱性名称/功能故障:
-
-${node.vuls[0]}
-
---------------
-指标:
-
-${node.impacts[0]}
-
---------------`
-    } else {
-      return `--------------
-脆弱性名称/功能故障:
-
-${node.vuls[0]}
-
-${node.vuls[1]}
-
---------------
-指标:
-
-${node.impacts[0]}
-
-${node.impacts[1]}
-
---------------`
-    }
   } else {
     return `--------------
 主机:
 
-${node.key} (${hostNameI18Map[node.key]})
+${node.key}
+
+--------------
+服务:
+
+${servicesToString(node)}
 
 --------------
 脆弱性:
@@ -143,11 +118,17 @@ ${vulsToString(node)}
 }
 
 function vulsToString(node: typeof modelJson.nodeDataArray[0]) {
-  let str = ""
-  for (let vul of node.vuls) {
-    str += `${vul} (${vulI18nMap[vul]})\n`
-  }
-  str = str.replace(/\n$/, "")
+  let str = node.vuls.join("\n")
+  return str == "" ? "无" : str
+}
+
+function servicesToString(node: typeof modelJson.nodeDataArray[0]) {
+  let str = node.service.join("\n")
+  return str == "" ? "无" : str
+}
+
+function impactsToString(node: typeof modelJson.nodeDataArray[0]) {
+  let str = node.impacts?.join("\n") ?? ""
   return str == "" ? "无" : str
 }
 
