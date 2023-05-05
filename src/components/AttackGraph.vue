@@ -13,15 +13,12 @@ const props = defineProps<{
 }>()
 
 function stringify(node) {
-  let res = ""
-  for (const key in node) {
-    if ([ "key", "loc", "__gohashid" ].includes(key)) {
-      continue
-    }
-    res += `${key}: ${node[key]}\n`
-  }
-  res = res.replace(/\n$/, "")
-  return res
+  return `--------------
+类型:
+
+${node.type}
+
+--------------`
 }
 
 onMounted(() => {
@@ -46,9 +43,9 @@ onMounted(() => {
     ),
     {
       toolTip: $("ToolTip", 
-        $(go.TextBlock, { margin: 5 },
-          new go.Binding("text", "", n => stringify(n))
-        )
+      $(go.TextBlock, { margin: 5, font: '16px Times New Roman 宋体' },
+        new go.Binding("text", "", n => stringify(n))
+      )
       )
     }
   )

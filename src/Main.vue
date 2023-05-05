@@ -200,6 +200,11 @@ onMounted(() => {
 function logout() {
   localStorage.clear()
   router.push('/login')
+  ElMessage({
+    message: '登出成功',
+    type: 'success',
+    duration: 2000
+  })
 }
 </script>
 

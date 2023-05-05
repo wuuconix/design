@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="展开的深度">
-        <el-input-number v-model="expandDepth" />
+        <el-input-number v-model="expandDepth" :min="1"/>
       </el-form-item>
       <el-form-item label="显示折叠图标">
         <el-switch
