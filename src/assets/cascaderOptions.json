@@ -1,149 +1,309 @@
 [
-  {
-    "value": "host",
-    "label": "删除一个主机",
-    "children": [
-      {
-        "value": "host0",
-        "label": "host0"
-      },
-      {
-        "value": "host1",
-        "label": "host1"
-      },
-      {
-        "value": "host2",
-        "label": "host2"
-      },
-      {
-        "value": "host3",
-        "label": "host3"
-      }
-    ]
-  },
-  {
-    "value": "vul",
-    "label": "删除一个脆弱性",
-    "children": [
-      {
-        "value": "host0",
-        "label": "host0的脆弱性",
-        "children": [
-          {
-            "value": "iis_bufferflow",
-            "label": "iis_bufferflow"
-          }
-        ]
-      },
-      {
-        "value": "host1",
-        "label": "host1的脆弱性",
-        "children": [
-          {
-            "value": "ftp_rhost",
-            "label": "ftp_rhost"
-          },          {
-            "value": "ssh_bufferflow",
-            "label": "ssh_bufferflow"
-          },
-          {
-            "value": "rsh_login",
-            "label": "rsh_login"
-          }
-        ]
-      },
-      {
-        "value": "host2",
-        "label": "host2的脆弱性",
-        "children": [
-          {
-            "value": "netbios_nullsession",
-            "label": "netbios_nullsession"
-          },          {
-            "value": "rsh_login",
-            "label": "rsh_login"
-          }
-        ]
-      },
-      {
-        "value": "host3",
-        "label": "host3的脆弱性",
-        "children": [
-          {
-            "value": "squid_port_scan",
-            "label": "squid_port_scan"
-          },          {
-            "value": "licq_remote_to_user",
-            "label": "licq_remote_to_user"
-          },
-          {
-            "value": "local_setuid_bufferflow",
-            "label": "local_setuid_bufferflow"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "value": "connection",
-    "label": "删除一个可达性关系信息",
-    "children": [
-      {
-        "value": "host0",
-        "label": "host0的可达性关系",
-        "children": [
-          {
-            "value": "host1",
-            "label": "host0 -> host1"
-          },
-          {
-            "value": "host2",
-            "label": "host0 -> host2"
-          },
-          {
-            "value": "host3",
-            "label": "host0 -> host3"
-          }
-        ]
-      },
-      {
-        "value": "host1",
-        "label": "host1的可达性关系",
-        "children": [
-          {
-            "value": "host2",
-            "label": "host1 -> host2"
-          },
-          {
-            "value": "host3",
-            "label": "host1 -> host3"
-          }
-        ]
-      },
-      {
-        "value": "host2",
-        "label": "host2的可达性关系",
-        "children": [
-          {
-            "value": "host1",
-            "label": "host2 -> host1"
-          },
-          {
-            "value": "host3",
-            "label": "host2 -> host3"
-          }
-        ]
-      },
-      {
-        "value": "host3",
-        "label": "host3的可达性关系",
-        "children": [
-          {
-            "value": "host3",
-            "label": "host3 -> host3"
-          }
-        ]
-      }
-    ]
-  }
+	{
+		"value": "host",
+		"label": "删除一个主机",
+		"children": [
+			{
+				"value": "Attacker",
+				"label": "Attacker"
+			},
+			{
+				"value": "WS",
+				"label": "WS"
+			},
+			{
+				"value": "DNS",
+				"label": "DNS"
+			},
+			{
+				"value": "OPC",
+				"label": "OPC"
+			},
+			{
+				"value": "Historian",
+				"label": "Historian"
+			},
+			{
+				"value": "HMI",
+				"label": "HMI"
+			},
+			{
+				"value": "EWS",
+				"label": "EWS"
+			},
+			{
+				"value": "PLC1",
+				"label": "PLC1"
+			},
+			{
+				"value": "PLC2",
+				"label": "PLC2"
+			},
+			{
+				"value": "Valve",
+				"label": "Valve"
+			},
+			{
+				"value": "Reactor",
+				"label": "Reactor"
+			},
+			{
+				"value": "Sensor",
+				"label": "Sensor"
+			}
+		]
+	},
+	{
+		"value": "vul",
+		"label": "删除一个脆弱性",
+		"children": [
+			{
+				"value": "Attacker",
+				"label": "Attacker的脆弱性",
+				"children": []
+			},
+			{
+				"value": "WS",
+				"label": "WS的脆弱性",
+				"children": [
+					{
+						"value": "Print_Improper_Privilege_Management",
+						"label": "Print_Improper_Privilege_Management"
+					}
+				]
+			},
+			{
+				"value": "DNS",
+				"label": "DNS的脆弱性",
+				"children": [
+					{
+						"value": "DNS_Remote_Code_Execution",
+						"label": "DNS_Remote_Code_Execution"
+					}
+				]
+			},
+			{
+				"value": "OPC",
+				"label": "OPC的脆弱性",
+				"children": [
+					{
+						"value": "OPC_Improper_Authentication",
+						"label": "OPC_Improper_Authentication"
+					},
+					{
+						"value": "OPC_Heap_Bufferflow",
+						"label": "OPC_Heap_Bufferflow"
+					}
+				]
+			},
+			{
+				"value": "Historian",
+				"label": "Historian的脆弱性",
+				"children": [
+					{
+						"value": "Oracle_Out_of_bounds_Write",
+						"label": "Oracle_Out_of_bounds_Write"
+					}
+				]
+			},
+			{
+				"value": "HMI",
+				"label": "HMI的脆弱性",
+				"children": [
+					{
+						"value": "HMI_Improper_Access_Control",
+						"label": "HMI_Improper_Access_Control"
+					}
+				]
+			},
+			{
+				"value": "EWS",
+				"label": "EWS的脆弱性",
+				"children": [
+					{
+						"value": "Improper_File_Access",
+						"label": "Improper_File_Access"
+					},
+					{
+						"value": "Deserialization_of_Untrusted_Data",
+						"label": "Deserialization_of_Untrusted_Data"
+					}
+				]
+			},
+			{
+				"value": "PLC1",
+				"label": "PLC1的脆弱性",
+				"children": [
+					{
+						"value": "PLC_Weak_Password_Recovery",
+						"label": "PLC_Weak_Password_Recovery"
+					}
+				]
+			},
+			{
+				"value": "PLC2",
+				"label": "PLC2的脆弱性",
+				"children": [
+					{
+						"value": "Improper_Check",
+						"label": "Improper_Check"
+					},
+					{
+						"value": "Modbus_Lack_of_Authentication",
+						"label": "Modbus_Lack_of_Authentication"
+					}
+				]
+			},
+			{
+				"value": "Valve",
+				"label": "Valve的脆弱性",
+				"children": [
+					{
+						"value": "Open_Close_Change",
+						"label": "Open_Close_Change"
+					}
+				]
+			},
+			{
+				"value": "Reactor",
+				"label": "Reactor的脆弱性",
+				"children": [
+					{
+						"value": "Abnormal_Operation",
+						"label": "Abnormal_Operation"
+					},
+					{
+						"value": "Deviation_Setpoint",
+						"label": "Deviation_Setpoint"
+					}
+				]
+			},
+			{
+				"value": "Sensor",
+				"label": "Sensor的脆弱性",
+				"children": [
+					{
+						"value": "Abnormal_Show",
+						"label": "Abnormal_Show"
+					}
+				]
+			}
+		]
+	},
+	{
+		"value": "connection",
+		"label": "删除一个可达性关系信息",
+		"children": [
+			{
+				"value": "Attacker",
+				"label": "Attacker的可达性关系",
+				"children": [
+					{
+						"value": "WS",
+						"label": "Attacker -> WS"
+					}
+				]
+			},
+			{
+				"value": "WS",
+				"label": "WS的可达性关系",
+				"children": [
+					{
+						"value": "DNS",
+						"label": "WS -> DNS"
+					},
+					{
+						"value": "Historian",
+						"label": "WS -> Historian"
+					}
+				]
+			},
+			{
+				"value": "Historian",
+				"label": "Historian的可达性关系",
+				"children": [
+					{
+						"value": "OPC",
+						"label": "Historian -> OPC"
+					}
+				]
+			},
+			{
+				"value": "DNS",
+				"label": "DNS的可达性关系",
+				"children": [
+					{
+						"value": "OPC",
+						"label": "DNS -> OPC"
+					}
+				]
+			},
+			{
+				"value": "OPC",
+				"label": "OPC的可达性关系",
+				"children": [
+					{
+						"value": "EWS",
+						"label": "OPC -> EWS"
+					},
+					{
+						"value": "HMI",
+						"label": "OPC -> HMI"
+					}
+				]
+			},
+			{
+				"value": "EWS",
+				"label": "EWS的可达性关系",
+				"children": [
+					{
+						"value": "HMI",
+						"label": "EWS -> HMI"
+					},
+					{
+						"value": "PLC1",
+						"label": "EWS -> PLC1"
+					}
+				]
+			},
+			{
+				"value": "HMI",
+				"label": "HMI的可达性关系",
+				"children": [
+					{
+						"value": "EWS",
+						"label": "HMI -> EWS"
+					}
+				]
+			},
+			{
+				"value": "PLC1",
+				"label": "PLC1的可达性关系",
+				"children": [
+					{
+						"value": "PLC2",
+						"label": "PLC1 -> PLC2"
+					}
+				]
+			},
+			{
+				"value": "PLC2",
+				"label": "PLC2的可达性关系",
+				"children": [
+					{
+						"value": "Valve",
+						"label": "PLC2 -> Valve"
+					},
+					{
+						"value": "Sensor",
+						"label": "PLC2 -> Sensor"
+					},
+					{
+						"value": "Reactor",
+						"label": "PLC2 -> Reactor"
+					}
+				]
+			}
+		]
+	}
 ]

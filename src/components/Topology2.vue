@@ -5,11 +5,13 @@
 <script setup lang="ts">
 import go from "gojs/release/go-debug"
 import modelJson from "../assets/topology2Model.json"
-import { onMounted } from "vue"
+import { onMounted, watch } from "vue"
 
 const emit = defineEmits(['updateCVSSInfo'])
+// @ts-ignore
 const props = defineProps<{
   isCVSS: boolean
+  modelJson: any
 }>()
 
 const cvssFullNameMap = {
@@ -132,9 +134,11 @@ function impactsToString(node: typeof modelJson.nodeDataArray[0]) {
   return str == "" ? "无" : str
 }
 
+let topo: go.Diagram
+
 onMounted(() => {
   const $ = go.GraphObject.make
-  const topo = new go.Diagram("topology")
+  topo = new go.Diagram("topology")
   topo.undoManager.isEnabled = true
   topo.toolManager.hoverDelay = 100
   topo.toolManager.toolTipDuration = 100000
@@ -213,6 +217,16 @@ function getCVSSInfo(data: typeof modelJson.nodeDataArray[1]) {
   return result
 }
 
+watch(
+  () => props.modelJson,
+  (newModelJson, _) => {
+    console.log("newModelJson detected")
+    topo.model = go.Model.fromJson(newModelJson)
+  },
+  {
+    deep: true
+  }
+)
 </script>
 <style scoped>
 </style>

@@ -105,7 +105,8 @@
         <Topology1 v-if="activeIndex == '1'" />
         <Topology2 v-if="activeIndex == '2-1'" :isCVSS="false"/>
         <AttackPath v-if="activeIndex == '2-2'" :analyse="false" :focus="false" :opacity="1" />
-        <Topology3 v-if="activeIndex == '3-1'" :model-json="topology3ModelJsonReactive"/>
+        <!-- <Topology3 v-if="activeIndex == '3-1'" :model-json="topology2ModelJsonReactive"/> -->
+        <Topology2 v-if="activeIndex == '3-1'" :isCVSS="false" :model-json="topology2ModelJsonReactive" />
         <Topology2 v-if="activeIndex == '4-1'" :isCVSS="true" @updateCVSSInfo="(data) => handleCVSSUpdate(data)" />
         <AttackPath v-if="activeIndex == '4-2'" ref="atp" :analyse="true" :focus="focus" :opacity="opacity / 100"/>
         <AttackGraph v-if="activeIndex == '3-2'" :update="isGraphUpdate"/>
@@ -125,12 +126,11 @@
 import { ref, reactive, onMounted } from 'vue'
 import Topology1 from './components/Topology1.vue'
 import Topology2 from './components/Topology2.vue'
-import Topology3 from './components/Topology3.vue'
 import AttackPath from './components/AttackPath.vue'
 import AttackGraph from './components/AttackGraph.vue'
 import Chart from './components/Chart.vue'
 import Chart2 from './components/Chart2.vue'
-import topology3ModelJson from "./assets/topology3Model.json"
+import topology2ModelJson from "./assets/topology2Model.json"
 import cascaderOptions from "./assets/cascaderOptions.json"
 import centerYnameOptions from "./assets/centerYnameOptions.json"
 import centerSortOptions from "./assets/centerSortOptions.json"
@@ -140,7 +140,7 @@ import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-let topology3ModelJsonReactive: typeof topology3ModelJson = reactive(JSON.parse(JSON.stringify(topology3ModelJson)))
+let topology2ModelJsonReactive: typeof topology2ModelJson = reactive(JSON.parse(JSON.stringify(topology2ModelJson)))
 const cvssInfos = reactive([])
 const activeIndex = ref('1')
 const cascaderValue = ref('')
@@ -165,22 +165,22 @@ function changeModel() {
   const select = cascaderValue.value
   if (select[0] == "host") {
     const targetHost = select[1]
-    topology3ModelJsonReactive.nodeDataArray = topology3ModelJsonReactive.nodeDataArray.filter(v => v.host_name != targetHost)
-    topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.from != targetHost && v.to != targetHost)
+    topology2ModelJsonReactive.nodeDataArray = topology2ModelJsonReactive.nodeDataArray.filter(v => v.host_name != targetHost)
+    topology2ModelJsonReactive.linkDataArray = topology2ModelJsonReactive.linkDataArray.filter(v => v.from != targetHost && v.to != targetHost)
   } else if (select[0] == "vul") {
     const targetHost = select[1]
     const targetVul = select[2]
-    const nodeData = topology3ModelJsonReactive.nodeDataArray.find(v => v.host_name == targetHost)
+    const nodeData = topology2ModelJsonReactive.nodeDataArray.find(v => v.host_name == targetHost)
     nodeData!.vuls = nodeData!.vuls.filter(vul => vul != targetVul)
   } else if (select[0] == "connection") {
     const fromHost = select[1]
     const toHost = select[2]
-    topology3ModelJsonReactive.linkDataArray = topology3ModelJsonReactive.linkDataArray.filter(v => v.from != fromHost || v.to != toHost)
+    topology2ModelJsonReactive.linkDataArray = topology2ModelJsonReactive.linkDataArray.filter(v => v.from != fromHost || v.to != toHost)
   }
 }
 
 function revertModel() {
-  Object.assign(topology3ModelJsonReactive, topology3ModelJson)
+  Object.assign(topology2ModelJsonReactive, topology2ModelJson)
 }
 
 function handleCVSSUpdate(data) {

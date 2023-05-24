@@ -59,7 +59,7 @@ function init() {
     ),
     props.analyse ? {
       toolTip: $("ToolTip", 
-        $(go.TextBlock, { margin: 5 },
+        $(go.TextBlock, { margin: 5, font: '16px	Times New Roman 宋体' },
           new go.Binding("text", "", n => stringify(n))
         )
       )
