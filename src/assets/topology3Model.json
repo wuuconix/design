@@ -8,7 +8,7 @@
 			"privilege": "3",
 			"service": [],
 			"vuls": [],
-			"img": "https://upyun.wuuconix.link/image-attacker.png",
+			"img": "/image-attacker.png",
 			"loc": "100 142.5"
 		},
 		{
@@ -22,7 +22,7 @@
 			"vuls": [
 				"iis_bufferflow"
 			],
-			"img": "https://upyun.wuuconix.link/image-h0.png",
+			"img": "/image-h0.png",
 			"loc": "315 142.5"
 		},
 		{
@@ -40,7 +40,7 @@
 				"ssh_bufferflow",
 				"rsh_login"
 			],
-			"img": "https://upyun.wuuconix.link/image-h1.png",
+			"img": "/image-h1.png",
 			"loc": "495 235"
 		},
 		{
@@ -56,7 +56,7 @@
 				"netbios_nullsession",
 				"rsh_login"
 			],
-			"img": "https://upyun.wuuconix.link/image-h1.png",
+			"img": "/image-h1.png",
 			"loc": "675 215"
 		},
 		{
@@ -74,7 +74,7 @@
 				"licq_remote_to_user",
 				"local_setuid_bufferflow"
 			],
-			"img": "https://upyun.wuuconix.link/image-h3.png",
+			"img": "/image-h3.png",
 			"loc": "855 90"
 		}
 	],

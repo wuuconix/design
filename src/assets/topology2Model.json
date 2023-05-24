@@ -9,7 +9,7 @@
 			"privilege": "3",
 			"service": [],
 			"vuls": [],
-			"img": "https://upyun.wuuconix.link/image-attacker.png"
+			"img": "/image-attacker.png"
 		},
 		{
 			"key": "WS",
@@ -27,7 +27,7 @@
 			"impacts": [
 				"AV:L/E:P/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "DNS",
@@ -45,7 +45,7 @@
 			"impacts": [
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-dns.png"
+			"img": "/image-dns.png"
 		},
 		{
 			"key": "OPC",
@@ -66,7 +66,7 @@
 				"AV:N/E:T/UI:N/C:N/I:H/A:N",
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-opc.png"
+			"img": "/image-opc.png"
 		},
 		{
 			"key": "Historian",
@@ -84,7 +84,7 @@
 			"impacts": [
 				"AV:N/E:P/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-historyDb.png"
+			"img": "/image-historyDb.png"
 		},
 		{
 			"key": "HMI",
@@ -101,7 +101,7 @@
 			"impacts": [
 				"AV:L/E:T/UI:N/C:N/I:H/A:N"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "EWS",
@@ -121,7 +121,7 @@
 				"AV:N/E:N/UI:N/C:H/I:H/A:H",
 				"AV:N/E:P/UI:R/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "PLC1",
@@ -139,7 +139,7 @@
 			"impacts": [
 				"AV:N/E:N/UI:N/C:H/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-controller.png"
+			"img": "/image-controller.png"
 		},
 		{
 			"key": "PLC2",
@@ -159,7 +159,7 @@
 				"AV:N/E:N/UI:R/C:H/I:H/A:H",
 				"AV:N/E:T/UI:N/C:H/I:N/A:N"
 			],
-			"img": "https://upyun.wuuconix.link/image-controller.png"
+			"img": "/image-controller.png"
 		},
 		{
 			"key": "Valve",
@@ -180,7 +180,7 @@
 			"impacts": [
 				"C:N/I:H/A:H"
 			],
-			"img": "https://upyun.wuuconix.link/image-exce-1.png"
+			"img": "/image-exce-1.png"
 		},
 		{
 			"key": "Reactor",
@@ -203,7 +203,7 @@
 				"C:N/I:N/A:H",
 				"C:N/I:L/A:L"
 			],
-			"img": "https://upyun.wuuconix.link/image-exce-3.png"
+			"img": "/image-exce-3.png"
 		},
 		{
 			"key": "Sensor",
@@ -223,7 +223,7 @@
 			"impacts": [
 				"C:N/I:N/A:L"
 			],
-			"img": "https://upyun.wuuconix.link/image-pres-sensor.png"
+			"img": "/image-pres-sensor.png"
 		}
 	],
 	"linkDataArray": [

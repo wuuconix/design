@@ -28,25 +28,25 @@
   <div class="footer">
     <span>Powered by</span>
     <el-tooltip effect="dark" content="Vue3" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-vue-logo.svg">
+      <img src="/image-vue-logo.svg">
     </el-tooltip>
     <el-tooltip effect="dark" content="Vite" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-vite-log.svg">
+      <img src="/image-vite-log.svg">
     </el-tooltip>
     <el-tooltip effect="dark" content="TypeScript" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-typescript-original.svg">
+      <img src="/image-typescript-original.svg">
     </el-tooltip>
     <el-tooltip effect="dark" content="ElementPlus" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-element-plus-logo-small.svg">
+      <img src="/image-element-plus-logo-small.svg">
     </el-tooltip>
     <el-tooltip effect="dark" content="GoJs" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-gojs.ico">
+      <img src="/image-gojs.ico">
     </el-tooltip>
     <el-tooltip effect="dark" content="Dagre" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-dagre-logo.png">
+      <img src="/image-dagre-logo.png">
     </el-tooltip>
     <el-tooltip effect="dark" content="Echarts" placement="top" :hide-after="0">
-      <img src="https://upyun.wuuconix.link/image-echarts-logo.png">
+      <img src="/image-echarts-logo.png">
     </el-tooltip>
   </div>
 </template>

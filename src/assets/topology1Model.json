@@ -13,21 +13,21 @@
 			"name": "服务器",
 			"category": "leftHost",
 			"loc": "-110 25",
-			"img": "https://upyun.wuuconix.link/image-server.png"
+			"img": "/image-server.png"
 		},
 		{
 			"key": "pc",
 			"name": "PC",
 			"category": "leftHost",
 			"loc": "-110 350",
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "db",
 			"name": "数据库",
 			"category": "rightHost",
 			"loc": "110 200",
-			"img": "https://upyun.wuuconix.link/image-db.png"
+			"img": "/image-db.png"
 		},
 		{
 			"key": "firewall",
@@ -45,28 +45,28 @@
 			"name": "历史数据库",
 			"category": "leftHost",
 			"loc": "310 25",
-			"img": "https://upyun.wuuconix.link/image-historyDb.png"
+			"img": "/image-historyDb.png"
 		},
 		{
 			"key": "operator",
 			"name": "操作员站",
 			"category": "leftHost",
 			"loc": "310 200",
-			"img": "https://upyun.wuuconix.link/image-operator.png"
+			"img": "/image-operator.png"
 		},
 		{
 			"key": "engineer",
 			"name": "工程师站",
 			"category": "leftHost",
 			"loc": "310 350",
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "hmi",
 			"name": "HMI",
 			"category": "rightHost",
 			"loc": "530 75",
-			"img": "https://upyun.wuuconix.link/image-pc.png"
+			"img": "/image-pc.png"
 		},
 		{
 			"key": "controller",
@@ -80,14 +80,14 @@
 			"category": "rightHost",
 			"group": "controller",
 			"loc": "530 250",
-			"img": "https://upyun.wuuconix.link/image-controller.png"
+			"img": "/image-controller.png"
 		},
 		{
 			"key": "c2",
 			"category": "rightHost",
 			"group": "controller",
 			"loc": "530 400",
-			"img": "https://upyun.wuuconix.link/image-controller.png"
+			"img": "/image-controller.png"
 		},
 		{
 			"key": "sensor",
@@ -108,49 +108,49 @@
 			"group": "sensor",
 			"loc": "775 20",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-pres-sensor.png"
+			"img": "/image-pres-sensor.png"
 		},
 		{
 			"key": "s2",
 			"group": "sensor",
 			"loc": "861 18",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-gas-sensor.png"
+			"img": "/image-gas-sensor.png"
 		},
 		{
 			"key": "s3",
 			"group": "sensor",
 			"loc": "775 113",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-mag-sensor.png"
+			"img": "/image-mag-sensor.png"
 		},
 		{
 			"key": "s4",
 			"group": "sensor",
 			"loc": "849 109",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-temp-sensor.png"
+			"img": "/image-temp-sensor.png"
 		},
 		{
 			"key": "e1",
 			"group": "excutor",
 			"loc": "775 375",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-exce-1.png"
+			"img": "/image-exce-1.png"
 		},
 		{
 			"key": "e2",
 			"group": "excutor",
 			"loc": "860 375",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-exce-3.png"
+			"img": "/image-exce-3.png"
 		},
 		{
 			"key": "e3",
 			"group": "excutor",
 			"loc": "775 460",
 			"category": "sensor",
-			"img": "https://upyun.wuuconix.link/image-exce-2.png"
+			"img": "/image-exce-2.png"
 		}
 	],
 	"linkDataArray": [

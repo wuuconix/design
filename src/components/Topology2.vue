@@ -147,7 +147,7 @@ onMounted(() => {
     new go.Binding("location", "loc", go.Point.parse),
     $(go.Picture, 
       {
-        source: "https://upyun.wuuconix.link/image-attacker.png",
+        source: "/image-attacker.png",
         width: 100,
         height: 100,
         imageStretch: go.GraphObject.Uniform 

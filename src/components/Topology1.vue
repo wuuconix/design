@@ -16,7 +16,7 @@ onMounted(() => {
       {	locationSpot: go.Spot.Center },
       new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
       $(go.Picture, {
-        source: "https://upyun.wuuconix.link/image-firewall.png",
+        source: "/image-firewall.png",
         width: 100,
         height: 100,
         imageStretch: go.GraphObject.Uniform 
@@ -58,7 +58,7 @@ onMounted(() => {
       $(go.Panel, "Vertical",
         $(go.Picture, 
           {
-            source: "https://upyun.wuuconix.link/image-attacker.png",
+            source: "/image-attacker.png",
             width: 100,
             height: 100,
             imageStretch: go.GraphObject.Uniform 

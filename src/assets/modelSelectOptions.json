@@ -9,10 +9,6 @@
       {
         "value": "topology2Model",
         "label": "流程工业拓扑图"
-      },
-      {
-        "value": "topology3Model",
-        "label": "TestNet拓扑图"
       }
     ]
   },
@@ -22,19 +18,6 @@
       {
         "value": "attackPathModel",
         "label": "流程工业攻击路径图"
-      }
-    ]
-  },
-  {
-    "label": "属性攻击图数据",
-    "options": [
-      {
-        "value": "attackGraphModel",
-        "label": "TestNet属性攻击图"
-      },
-      {
-        "value": "attackGraphUpdateModel",
-        "label": "TestNet属性攻击图(更新)"
       }
     ]
   }
