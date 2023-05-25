@@ -61,12 +61,12 @@ const form = reactive({
   password: ""
 })
 const imgs = [
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjywtzo1yj31c00u0e6r.jpg",
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjyz0ls7cj30rj0dwgwb.jpg",
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjyzlurj9j30xc0j0naa.jpg",
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjz0398dqj31hc0zk1l0.jpg",
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjz0psv8kj31hc0zke84.jpg",
-  "https://sina.wuuconix.link/large/007YVyKcly1hdjz16k36uj30m80bu0w0.jpg"
+  "/007YVyKcly1hdjywtzo1yj31c00u0e6r.jpg",
+  "/007YVyKcly1hdjyz0ls7cj30rj0dwgwb.jpg",
+  "/007YVyKcly1hdjyzlurj9j30xc0j0naa.jpg",
+  "/007YVyKcly1hdjz0398dqj31hc0zk1l0.jpg",
+  "/007YVyKcly1hdjz0psv8kj31hc0zke84.jpg",
+  "/007YVyKcly1hdjz16k36uj30m80bu0w0.jpg"
 ]
 const router = useRouter()
 

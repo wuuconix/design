@@ -1,24 +1,14 @@
 [
   {
-    "label": "拓扑图数据",
-    "options": [
-      {
-        "value": "topology1Model",
-        "label": "流程工业拓扑图(分区)"
-      },
-      {
-        "value": "topology2Model",
-        "label": "流程工业拓扑图"
-      }
-    ]
+    "value": "topology",
+    "label": "拓扑图数据"
   },
   {
-    "label": "攻击路径图数据",
-    "options": [
-      {
-        "value": "attackPathModel",
-        "label": "流程工业攻击路径图"
-      }
-    ]
+    "value": "attackPath",
+    "label": "攻击路径图数据"
+  },
+  {
+    "value": "attackGraph",
+    "label": "属性攻击图数据"
   }
 ]
