@@ -48,6 +48,13 @@ const jsonDataMap = new Map([
   ["ataackGraph", attackGraphModelJson]
 ])
 
+// @ts-ignore
+const atgFormatMap = new Map([
+  ["vulnerability", "原子攻击"],
+  ["condition", "系统属性"],
+  ["privilege", "权限"]
+])
+
 function handleSelectChange(type: string) {
   if (type == "topology") {
     getTopologyTableData()
@@ -118,7 +125,7 @@ function getAttackGraphTableData() {
     tableData.push({
       id: index++,
       atgName: node.key,
-      type: node.type
+      type: atgFormatMap.get(node.type)
     })
   }
 }
