@@ -1,16 +1,16 @@
 <template>
   <el-container class="body">
-    <el-aside width="35vw">
-      <el-form-item label="数据">
-        <el-select v-model="type" placeholder="Select" @change="handleSelectChange">
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-        </el-select>
-      </el-form-item>
-      <el-button type="primary" plain @click="download">下载对应模型JSON数据</el-button>
-    </el-aside>
     <el-main>
-      <el-table :data="slicedTableData" style="width: 100%" stripe border>
-        <el-table-column prop="id" label="编号" />
+      <div class="top">
+        <el-form-item label="数据">
+          <el-select v-model="type" placeholder="Select" @change="handleSelectChange">
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
+        </el-form-item>
+        <el-button type="primary" plain @click="download">下载对应模型JSON数据</el-button>
+      </div>
+      <el-table :data="slicedTableData" style="width: 100%;" stripe border>
+        <el-table-column prop="id" label="编号" width="100" />
         <el-table-column v-if="type=='topology'" prop="name" label="主机名" />
         <el-table-column v-if="type=='topology'" prop="service" label="服务" />
         <el-table-column v-if="type=='topology'" prop="vul" label="漏洞" />
@@ -154,20 +154,29 @@ watch(currentPage, (v) => {
 </script>
 
 <style scoped>
-.el-aside {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 ::v-deep(.el-table .cell){
   white-space: pre-line;
 }
 ::v-deep(.el-table__row) {
-  height: 64px;
+  height: 48px;
 }
 .el-pagination {
   position: absolute;
   bottom: 20px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95vw;
+}
+.el-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.el-button {
+  margin-bottom: 18px;
 }
 </style>

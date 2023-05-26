@@ -193,7 +193,7 @@ onMounted(() => {
   ElMessage({
     message: '欢迎登录面向流程工业系统的安全度量系统',
     type: 'success',
-    duration: 2000
+    duration: 1000
   })
 })
 
