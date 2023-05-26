@@ -45,7 +45,7 @@ const currentPage = ref(1)
 const jsonDataMap = new Map([
   ["topology", topology2ModelJson],
   ["attackPath", attackPathModelJson],
-  ["ataackGraph", attackGraphModelJson]
+  ["attackGraph", attackGraphModelJson]
 ])
 
 // @ts-ignore
